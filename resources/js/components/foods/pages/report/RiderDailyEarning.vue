@@ -71,10 +71,10 @@ export default {
         };
     },
     computed: {
-        ...mapState(["RiderDailyEarning"])
+        ...mapState('Report', ["RiderDailyEarning"])
     },
     methods: {
-        ...mapActions(["getRiderDailyEarning"]),
+        ...mapActions('Report', ["getRiderDailyEarning"]),
         fetch() {
             if (this.filter.dateFrom > this.filter.dateTo) {
                 this.$Message.error({
@@ -83,11 +83,11 @@ export default {
                 });
                 return;
             }
-            let filter = {
+            let payload = {
                 dateFrom: moment(this.filter.dateFrom).format("YYYY-MM-DD"),
                 dateTo: moment(this.filter.dateTo).format("YYYY-MM-DD")
             };
-            this.getRiderDailyEarning({ filter });
+            this.getRiderDailyEarning(payload);
         },
         toExcel(type, fn, dl) {
 

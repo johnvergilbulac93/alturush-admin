@@ -20,6 +20,9 @@
             </thead>
 
             <tbody class="tbody">
+                <tr v-if="RiderDailyEarning.grandTotal == 0">
+                    <td colspan="5" class="font-semibold text-center td"> NO DATA AVAILABLE </td>
+                </tr>
                 <template v-for="({
                 rider,
                 dates,
@@ -117,7 +120,8 @@ import { mapState } from "vuex";
 export default {
     name: "RiderDailyEarningDetailed",
     computed: {
-        ...mapState(["RiderDailyEarning"])
+        ...mapState('Report', ["RiderDailyEarning"])
+
     },
 };
 </script>

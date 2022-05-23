@@ -21,10 +21,10 @@
                 </tr>
             </tbody>
             <tfoot v-if="RiderDailyEarning.grandTotal != 0">
-                <tr class="tracking-normal font-semibold">
-                    <td class="text-center td">GRAND TOTAL</td>
+                <tr class="tracking-normal font-semibold bg-gray-200" >
+                    <td class=" td">GRAND TOTAL</td>
                     <td class="text-right td">
-                        {{ RiderDailyEarning.grandTotal | toCurrency  }}
+                        {{ RiderDailyEarning.grandTotal | toCurrency }}
                     </td>
                 </tr>
             </tfoot>
@@ -38,7 +38,7 @@ import { mapState } from "vuex";
 export default {
     name: "RiderDailyEarningSummary",
     computed: {
-        ...mapState(["RiderDailyEarning"])
+        ...mapState('Report', ["RiderDailyEarning"])
     }
 };
 </script>

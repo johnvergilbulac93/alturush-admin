@@ -307,16 +307,6 @@ export const userChangeUsername = async ({ commit }, { user }) => {
         }, 5000);
     }
 };
-export const getRiderDailyEarning = async ({ commit }, { filter }) => {
-    try {
-        const { status, data } = await Report.rider_daily_earning(filter);
-        if (status === 200) {
-            commit("SET_RIDER_DAILY_EARNING", data);
-        }
-    } catch (error) {
-        console.log(error);
-    }
-};
 export const getRiderCountPerDay = async ({ commit }, { filter }) => {
     try {
         const { status, data } = await Report.rider_count_per_day(filter);

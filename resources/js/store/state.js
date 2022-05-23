@@ -47,7 +47,6 @@ export default {
     Transactions: [],
     Accountability: [],
 
-    RiderDailyEarning: [],
     RiderCountPerDay: [],
     OrderDataReport: [],
     MostCancelledItems: [],

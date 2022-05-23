@@ -106,9 +106,6 @@ export const SET_STORE_PRICE_GROUP = (state, payload) => {
 
 
 
-export const SET_RIDER_DAILY_EARNING = (state, payload) => {
-    state.RiderDailyEarning = payload;
-};
 export const SET_RIDER_COUNT_PER_DAY = (state, payload) => {
     state.RiderCountPerDay = payload;
 };

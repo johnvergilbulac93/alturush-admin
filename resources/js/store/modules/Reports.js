@@ -12,7 +12,8 @@ export default {
         TownMostOrder: [],
         TenantMostOrder: [],
         SourceMostOrder: [],
-        RiderTransaction: []
+        RiderTransaction: [],
+        RiderDailyEarning: []
     },
     mutations: {
         SET_LIQUIDATION(state, payload) {
@@ -53,6 +54,9 @@ export default {
         },
         SET_RIDER_TRANSACTION(state, payload) {
             state.RiderTransaction = payload;
+        },
+        SET_RIDER_DAILY_EARNING(state, payload) {
+            state.RiderDailyEarning = payload;
         }
     },
     actions: {
@@ -322,7 +326,34 @@ export default {
                         break;
                 }
             }
-        }
+        },
+        async getRiderDailyEarning({ commit }, payload) {
+            try {
+                Spin.show();
+                const { status, data } = await Http.rider_daily_earning(payload);
+                if (status === 200) {
+                    commit("SET_RIDER_DAILY_EARNING", data);
+                    Spin.hide();
+                }
+            } catch (error) {
+                Spin.hide();
+
+                const { status, data } = error.response;
+                switch (status) {
+                    case 422:
+                        let obj = data.errors;
+                        for (let msg in obj) {
+                            Message.error({
+                                background: true,
+                                content: `${obj[msg]}`
+                            });
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        },
     },
     getters: {
         totalRiderTransaction(state) {
