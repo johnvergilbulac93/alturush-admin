@@ -1793,6 +1793,14 @@ body{
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
 }
+.td2{
+  border-bottom-width: 1px;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
+}
 .tr{
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
@@ -2269,6 +2277,9 @@ hr{
 .file\:text-blue-500::file-selector-button{
   --tw-text-opacity: 1;
   color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+.last\:border-0:last-child{
+  border-width: 0px;
 }
 .hover\:scale-105:hover{
   --tw-scale-x: 1.05;

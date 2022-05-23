@@ -1,6 +1,6 @@
 <template>
     <div class="w-3/4 mt-2 border rounded">
-        <table class="min-w-full" id="rider_daily_earning_table">
+        <table class="min-w-full " id="rider_daily_earning_table">
             <thead class="border-b tracking-normal">
                 <tr>
                     <th class=" p-2 text-left">Date</th>
@@ -18,140 +18,96 @@
                     </th>
                 </tr>
             </thead>
-            <tbody class="tbody">
-                <tr
-                    v-for="({
-                        rider,
-                        dates,
-                        grandTotalRates,
-                        grandTotalTransactions,
-                        grandTotalTotal
-                    },
-                    index) in RiderDailyEarning.tableData"
-                    :key="rider"
-                >
-                    <td colspan="5" class="td">{{ rider }}</td>
-                    <template
-                        v-for="({ date, towns, dateSubTotal },
-                        dateIndex) in dates"
-                    >
-                        <td :key="`${index}+${dateIndex}`">
-                        </td>
-                    </template>
-                </tr>
-            </tbody>
-        </table>
 
-        <!-- <table
-            class="min-w-full divide-y divide-gray-300 mb-2"
-            id="exportable_table"
-            v-for="({
+            <tbody class="tbody">
+                <template v-for="({
                 rider,
                 dates,
                 grandTotalRates,
                 grandTotalTransactions,
                 grandTotalTotal
             },
-            index) in data_rider_earning.tableData"
-            :key="rider"
-        >
-            <thead class="border bg-gray-100  tracking-normal">
-                <tr>
-                    <th colspan="5" class=" p-2 border">
-                        <span class="font-semibold flex justify-start">{{
-                            rider
-                        }}</span>
-                    </th>
-                </tr>
-                <tr class="border">
-                    <th class="border p-2 text-left">Date</th>
-                    <th class="border p-2 text-center">
-                        Location
-                    </th>
-                    <th class="border p-2 text-center">
-                        Rates (Rider's Fee + Fuel)
-                    </th>
-                    <th class="border p-2 text-center">
-                        No. of Transaction
-                    </th>
-                    <th class="border p-2 text-right">
-                        Total
-                    </th>
-                </tr>
-            </thead>
-            <tbody class="tbody">
-                <template
-                    v-for="({ date, towns, dateSubTotal }, dateIndex) in dates"
-                    :key="'a' + date"
-                >
-                    <tr>
-                        <td class="td text-left" :rowspan="towns.length">
-                            {{ date }}
+                index) in RiderDailyEarning.tableData">
+
+                    <tr :key="`${rider}-${index}`">
+                        <td class="p-2  bg-gray-50 border-b font-semibold text-gray-600  text-xs uppercase" colspan="5">
+                            {{ rider }}
+                        </td>
+                    </tr>
+
+                    <template v-for="({ date, towns, dateSubTotal }, dateIndex) in dates">
+
+                        <tr :key="`a-${index}-${dateIndex}`">
+                            <td class="td text-center"> {{ date }}</td>
+                            <td class="border-b border-x ">
+                                <table class="w-full">
+                                    <tr v-for="(town, townIndex) in towns" :key="`${townIndex}-${index}`"
+                                        class="border-b last:border-0">
+                                        <td class="p-2 text-xs text-gray-600">{{ town.town }}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td class="border-b border-x ">
+                                <table class="w-full">
+                                    <tr v-for="(town, townIndex) in towns" :key="`${townIndex}-${index}`"
+                                        class="border-b last:border-0">
+                                        <td class="p-2 text-xs text-gray-600 text-center">{{ town.rates }}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td class="border-b border-x ">
+                                <table class="w-full">
+                                    <tr v-for="(town, townIndex) in towns" :key="`${townIndex}-${index}`"
+                                        class="border-b last:border-0">
+                                        <td class="p-2 text-xs text-gray-600 text-center">{{ town.noOfTransactions }}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td class="border-b border-l ">
+                                <table class="w-full">
+                                    <tr v-for="(town, townIndex) in towns" :key="`${townIndex}-${index}`"
+                                        class="border-b last:border-0">
+                                        <td class="p-2 text-xs text-gray-600 text-right">{{ town.total }}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr class="font-semibold  bg-gray-100" :key="`${index}-${dateIndex}`">
+                            <td colspan="2" class="td ">Sub-Total</td>
+                            <td class="text-center td">
+                                {{ dateSubTotal.subTotalRates }}
+                            </td>
+                            <td class="text-center td">
+                                {{ dateSubTotal.subTotalNoOfTransactions }}
+                            </td>
+                            <td class="text-right td">
+                                {{ dateSubTotal.subTotal }}
+                            </td>
+                        </tr>
+
+                    </template>
+                    <tr class="font-semibold bg-gray-200 " :key="`b-${rider}-${index}`">
+                        <td class="td" colspan="2">Grand Total</td>
+                        <td class="td text-center">
+                            {{ grandTotalRates }}
                         </td>
                         <td class="td text-center">
-                            {{ towns[0].town }}
-                        </td>
-                        <td class="td text-center">
-                            {{ towns[0].rates }}
-                        </td>
-                        <td class="td text-center">
-                            {{ towns[0].noOfTransactions }}
+                            {{ grandTotalTransactions }}
                         </td>
                         <td class="td text-right">
-                            {{ towns[0].total | toCurrency2 }}
-                        </td>
-                    </tr>
-                    <tr
-                        v-for="{
-                            town,
-                            rates,
-                            key,
-                            noOfTransactions,
-                            total
-                        } in slicedTowns(towns)"
-                        :key="key"
-                    >
-                        <td class="td text-center">{{ town }}</td>
-                        <td class="td text-center">{{ rates }}</td>
-                        <td class="td text-center">
-                            {{ noOfTransactions }}
-                        </td>
-                        <td class="td text-right">{{ total | toCurrency2 }}</td>
-                    </tr>
-                    <tr
-                        class="font-semibold bg-gray-200"
-                        :key="`${dateIndex}-${rider}`"
-                    >
-                        <td colspan="2" class="td">Sub-Total</td>
-                        <td class="text-center td">
-                            {{ dateSubTotal.subTotalRates }}
-                        </td>
-                        <td class="text-center td">
-                            {{ dateSubTotal.subTotalNoOfTransactions }}
-                        </td>
-                        <td class="text-right td">
-                            {{ dateSubTotal.subTotal | toCurrency2 }}
+                            {{ grandTotalTotal | toCurrency }}
                         </td>
                     </tr>
                 </template>
-
-                <tr
-                    class="font-semibold bg-gray-300 "
-                    :key="`${index} - ${rider} `"
-                >
-                    <td class="td" colspan="2">Grand Total</td>
-                    <td class="td text-center">
-                        {{ grandTotalRates }}
-                    </td>
-                    <td class="td text-center">
-                        {{ grandTotalTransactions }}
-                    </td>
-                    <td class="td text-right">
-                        {{ grandTotalTotal | toCurrency2 }}
-                    </td>
-                </tr>
             </tbody>
-        </table> -->
+
+
+
+        </table>
+
+
     </div>
 </template>
 
@@ -163,10 +119,5 @@ export default {
     computed: {
         ...mapState(["RiderDailyEarning"])
     },
-    methods: {
-        slicedTowns(towns) {
-            return towns.slice(1);
-        }
-    }
 };
 </script>

@@ -17,6 +17,9 @@ body {
 .td {
     @apply p-2  text-gray-600 border-b  text-xs;
 }
+.td2 {
+    @apply p-2  text-blue-600 border-b  text-xs;
+}
 .tr {
     @apply hover:bg-gray-100 text-gray-600;
 }

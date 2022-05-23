@@ -24,7 +24,7 @@
                 <tr class="tracking-normal font-semibold">
                     <td class="text-center td">GRAND TOTAL</td>
                     <td class="text-right td">
-                        {{ RiderDailyEarning.grandTotal | toCurrency }}
+                        {{ RiderDailyEarning.grandTotal | toCurrency  }}
                     </td>
                 </tr>
             </tfoot>

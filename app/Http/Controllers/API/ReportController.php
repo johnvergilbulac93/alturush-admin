@@ -342,7 +342,7 @@ class ReportController extends Controller
                 ->join('fd_products', 'fd_products.product_id', 'toms_customer_orders.product_id')
                 ->join('locate_tenants', 'locate_tenants.tenant_id', 'fd_products.tenant_id')
                 ->join('locate_business_units', 'locate_business_units.bunit_code', 'locate_tenants.bunit_code')
-                ->select('toms_customer_orders.quantity 
+                ->select('toms_customer_orders.quantity
                 as  prod_qty', 'locate_tenants.logo as tenant_logo', 'toms_customer_orders.*', 'fd_products.*', 'locate_tenants.*', 'locate_business_units.*')
                 ->where(['fd_products.tenant_id' => $value['tenant_id'], 'canceled_status' => false])
                 ->whereDate('pickup_at', $date)
@@ -521,7 +521,7 @@ class ReportController extends Controller
             // ->limit(20)
             ->get()
             ->groupBy('rider_id');
-        
+
         foreach ($data_res as $key => $value) {
             $data_result[] = [
                 'riders_name' => $value->first()->r_lastname . ", " . $value->first()->r_firstname,
@@ -548,6 +548,8 @@ class ReportController extends Controller
             ->where('delevered_status', 1)
             ->whereBetween('delevered_at', [$dateFrom,  $dateTo])
             ->get();
+
+
         $ridersDeliveries = $riders->groupBy([
             'rider_name',
             'transaction_date',
@@ -612,6 +614,7 @@ class ReportController extends Controller
         }
 
         return $this->orderByHighestEarnings($riderDailyEarnings);
+
     }
     private function orderByHighestEarnings($riderDailyEarnings)
     {
