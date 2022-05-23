@@ -1,0 +1,152 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply font-rubik;
+}
+
+.tbody {
+    @apply text-gray-800;
+}
+.td {
+    @apply p-2  text-gray-600 border-b  text-xs;
+}
+.tr {
+    @apply hover:bg-gray-100 text-gray-600;
+}
+.footer-btn {
+    @apply bg-orange-500 text-gray-50 text-sm p-2 rounded mt-1 disabled:opacity-50 focus:outline-none w-14 h-8 hover:bg-orange-600 hover:text-white transition duration-500;
+}
+.li {
+    @apply px-3 py-2 transition duration-200 relative block  hover:bg-gray-100;
+}
+
+.form {
+    @apply w-full border-gray-300   focus:border-orange-400 focus:ring-orange-400  shadow-sm placeholder-gray-400 text-sm text-gray-700;
+}
+.form-search {
+    @apply text-sm w-full border-gray-300  focus:ring-orange-500 focus:border-orange-500 shadow-sm;
+}
+.button-search {
+    @apply border-gray-300 py-2 px-4 focus:outline-none hover:bg-orange-500 hover:text-white border focus:ring-orange-500;
+}
+.form-checkbox {
+    @apply w-4 h-4 rounded text-orange-500 focus:ring-orange-500 border-gray-300 cursor-pointer;
+}
+.form-sort {
+    @apply focus:border-orange-500 border-gray-300 focus:ring-orange-500 shadow-sm;
+}
+hr {
+    @apply text-gray-200;
+}
+
+.btn-submit {
+    @apply p-2 bg-green-500 hover:bg-green-600 text-white rounded;
+}
+.btn-cancel {
+    @apply p-2 bg-red-500 hover:bg-red-600 text-white rounded;
+}
+.btn-primary {
+    @apply p-2 bg-blue-500 hover:bg-blue-600 text-white rounded;
+}
+.btn-add {
+    @apply rounded-full bg-orange-500 px-2 py-1 text-white focus:outline-none hover:bg-orange-600;
+}
+::-webkit-scrollbar {
+    @apply block w-1;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-gray-300;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-gray-400;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+}
+
+.scrollbar::-webkit-scrollbar {
+    @apply w-1 hidden;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-300;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-400;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+}
+
+.form-control {
+    @apply text-sm w-full border-gray-300 rounded focus:ring-orange-500 focus:border-white;
+}
+.btn {
+    @apply border-gray-300 py-2 px-4 focus:ring-orange-500;
+}
+.select-sort {
+    @apply border-gray-300 rounded focus:ring-orange-500 focus:border-white;
+}
+
+.capsule-warning {
+    @apply px-2 py-1 rounded-full text-gray-50  text-xs hover:text-white transition duration-500 bg-red-500 hover:bg-red-600 cursor-pointer;
+}
+.capsule-success {
+    @apply px-2 py-1 rounded-full text-gray-50  text-xs hover:text-white transition duration-500 bg-teal-400  hover:bg-teal-500 cursor-pointer;
+}
+.dot-active {
+    @apply h-3 w-3 rounded-full bg-green-700;
+}
+.dot-inactive {
+    @apply h-3 w-3 rounded-full bg-red-700;
+}
+
+.ivu-tabs-bar {
+    @apply mb-0 !important;
+}
+.ivu-form-item {
+    @apply mb-2 !important;
+}
+.ivu-drawer-header-inner {
+    @apply capitalize font-semibold text-gray-600 !important;
+}
+.ivu-modal-header-inner {
+    @apply capitalize font-semibold text-gray-600 !important;
+}
+.ivu-form-item-label {
+    @apply font-semibold !important;
+}
+.ivu-drawer-close .ivu-icon-ios-close:hover {
+    @apply text-red-500 !important;
+}
+/* .ivu-menu-submenu-title {
+    @apply font-semibold   !important;
+} */
+.ivu-menu-vertical.ivu-menu-light:after {
+    @apply bg-white !important;
+}
+.ivu-modal-confirm-head-title {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+}
+.ivu-spin-fix {
+    z-index: 100 !important;
+}
+.exportBtn {
+    @apply w-[50%] px-4 py-1 h-[32px] text-center cursor-pointer bg-green-500 focus:outline-none hover:bg-green-600 text-white  transition duration-500 rounded;
+}
+.ivu-spin-fix {
+    @apply bg-black/60 !important;
+}
