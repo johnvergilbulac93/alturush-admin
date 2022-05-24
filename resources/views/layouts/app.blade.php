@@ -47,7 +47,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             </div>
-                        </button> 
+                        </button>
 
                         <transition enter-active-class=" ease-in-out transition duration-500 " enter-class="transform -translate-y-5 opacity-0 " enter-to-class="opacity-100" leave-active-class="ease-in-out transition duration-500" leave-class=" opacity-100" leave-to-class="transform -translate-y-5 opacity-0">
 
@@ -88,7 +88,7 @@
 
             </div>
 
-    
+
 
         </nav>
         {{-- End NavBar --}}
@@ -101,7 +101,7 @@
                     <h1 class="text-gray-400 text-xs mt-1"> [ {{ auth()->user()->type->usertype }} MENU ]</h1>
                 </div>
             </header>
-            <div >
+            <div>
                 @can('isSuperAdmin')
                 <menu-main></menu-main>
                 @endcan
@@ -125,24 +125,19 @@
                 @endcan
             </div>
         </aside>
-        {{-- Where Vue Components Display --}}
+
         <div class="ml-60 mt-[75px] p-2  ">
-                <router-view />
+            <router-view />
         </div>
+        <back-to-top />
 
-        {{-- End Where Vue Components Display --}}
-
-        {{-- Button for back to top --}}
-        <button id="backtoTop" class="hidden fixed z-30 bottom-0 right-0 mb-3 mr-3 focus:outline-none bg-gradient-to-tl to-yellow-600 from-red-500 w-12 h-12 rounded-full shadow-xl transition duration-700 ease-in-out transform hover:scale-105 ">
+        <!-- <button id="backtoTop" class="hidden fixed z-30 bottom-0 right-0 mb-3 mr-3 focus:outline-none bg-gradient-to-tl to-yellow-600 from-red-500 w-12 h-12 rounded-full shadow-xl transition duration-700 ease-in-out transform hover:scale-105 ">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
             </svg>
-        </button>
-        {{-- End Button for back to top --}}
+        </button> -->
 
-        {{-- Profile Vue Component --}}
         <Profile v-if="upload_profile" />
-        {{-- End Profile Vue Component --}}
 
     </div>
 
@@ -165,8 +160,8 @@
     </footer> --}}
 
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/custom.js') }}" defer></script>
-    {{-- <script src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js" defer></script> --}}
+    <!-- <script src="{{ asset('js/custom.js') }}" defer></script> -->
+    <!-- {{-- <script src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js" defer></script> --}} -->
     <script src="{{ asset('js/excel.js') }}" defer></script>
 
 </body>

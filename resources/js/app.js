@@ -118,6 +118,7 @@ Vue.component("Clock", require("./Usable/Clock.vue").default);
 Vue.component("menu-item", require("./Usable/TheMenuItem.vue").default);
 Vue.component("SubItem", require("./Usable/TheSubMenuItem.vue").default);
 Vue.component("Loading", require("./Usable/Loading.vue").default);
+Vue.component("back-to-top", require("./Usable/BacktoTop.vue").default);
 
 Vue.component("menu-main", require("./components/menu/Main-Menu.vue").default);
 Vue.component(

@@ -88,9 +88,8 @@
                 <MenuItem name="8-4" to="/foods/report/source_most_order">Source Most Order</MenuItem>
                 <MenuItem name="8-5" to="/foods/report/rider_transaction">Rider Transaction</MenuItem>
                 <MenuItem name="8-6" to="/foods/report/rider_daily_earning">Rider Daily Earning</MenuItem>
-                <MenuItem name="8-6" to="/foods/report/rider_count_per_day">Rider Count Per Day</MenuItem>
-
-
+                <MenuItem name="8-7" to="/foods/report/rider_count_per_day">Rider Count Per Day</MenuItem>
+                <MenuItem name="8-8" to="/foods/report/order_data_report">Order Data Report</MenuItem>
             </Submenu>
         </Submenu>
     </Menu>

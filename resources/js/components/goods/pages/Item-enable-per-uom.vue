@@ -218,6 +218,7 @@ export default {
                 currentPage: this.currentPage,
                 filterData: filterData
             });
+            this.reset();
         },
         clear() {
             this.tableData.search = "";

@@ -57,10 +57,11 @@ import source_most_order from "./../components/foods/pages/report/SourceMostOrde
 import rider_transaction from "./../components/foods/pages/report/RiderTransaction";
 import rider_daily_earning from "./../components/foods/pages/report/RiderDailyEarning";
 import rider_count_per_day from "./../components/foods/pages/report/RiderCountPerDay";
+import order_data_report from "./../components/foods/pages/report/OrderDataReport";
 
 import Redirect from "./../Usable/Redirect";
 
-const route = [
+const routes = [
     {
         path: "/",
         name: "main-page",
@@ -259,6 +260,11 @@ const route = [
         component: rider_count_per_day
     },
     {
+        path: "/foods/report/order_data_report",
+        name: "order_data_report",
+        component: order_data_report
+    },
+    {
         path: "/dashboard",
         name: "dashboard",
         component: dashboard
@@ -307,4 +313,4 @@ const route = [
 
     { path: "*", component: Redirect }
 ];
-export default route;
+export default routes;
