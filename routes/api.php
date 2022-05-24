@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 // this routes is protected by authentication
 Route::middleware('auth:api')->group(function () {
 
-    //Uploading Routes 
+    //Uploading Routes
     Route::prefix('uploading')->group(function () {
         Route::post('/item',                                    'API\UploadingController@uploaditem');
         Route::post('/item_price',                              'API\UploadingController@uploadprice');
@@ -33,7 +33,7 @@ Route::middleware('auth:api')->group(function () {
         Route::post('/item_image',                              'API\UploadingController@multipleImage');
         Route::post('/item_description',                        'API\UploadingController@item_description');
     });
-    //End Uploading Routes 
+    //End Uploading Routes
 
     //Chart Routes
     Route::prefix('chart')->group(function () {

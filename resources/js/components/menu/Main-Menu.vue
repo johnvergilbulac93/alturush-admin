@@ -41,7 +41,7 @@
             <Submenu name="4">
                 <template slot="title">
                     <Icon type="ios-archive" />
-                    Product 
+                    Product
                 </template>
                 <MenuItem name="3-1" to="/goods/product_lists">Product Lists</MenuItem>
                 <MenuItem name="3-2" to="/goods/disable_product_uom">Disable Product Unit of Measure(UOM)</MenuItem>
@@ -88,6 +88,9 @@
                 <MenuItem name="8-4" to="/foods/report/source_most_order">Source Most Order</MenuItem>
                 <MenuItem name="8-5" to="/foods/report/rider_transaction">Rider Transaction</MenuItem>
                 <MenuItem name="8-6" to="/foods/report/rider_daily_earning">Rider Daily Earning</MenuItem>
+                <MenuItem name="8-6" to="/foods/report/rider_count_per_day">Rider Count Per Day</MenuItem>
+
+
             </Submenu>
         </Submenu>
     </Menu>

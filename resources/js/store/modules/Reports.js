@@ -13,7 +13,8 @@ export default {
         TenantMostOrder: [],
         SourceMostOrder: [],
         RiderTransaction: [],
-        RiderDailyEarning: []
+        RiderDailyEarning: [],
+        RiderCountPerDay: []
     },
     mutations: {
         SET_LIQUIDATION(state, payload) {
@@ -57,6 +58,9 @@ export default {
         },
         SET_RIDER_DAILY_EARNING(state, payload) {
             state.RiderDailyEarning = payload;
+        },
+        SET_RIDER_COUNT_PER_DAY(state, payload) {
+            state.RiderCountPerDay = payload;
         }
     },
     actions: {
@@ -81,6 +85,12 @@ export default {
                                 content: `${obj[msg]}`
                             });
                         }
+                        break;
+                    case 500:
+                        Message.info({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
                         break;
                     default:
                         break;
@@ -110,6 +120,12 @@ export default {
                             });
                         }
                         break;
+                    case 500:
+                        Message.info({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
+                        break;
                     default:
                         break;
                 }
@@ -138,6 +154,12 @@ export default {
                             });
                         }
                         break;
+                    case 500:
+                        Message.info({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
+                        break;
                     default:
                         break;
                 }
@@ -164,6 +186,12 @@ export default {
                             });
                         }
                         break;
+                    case 500:
+                        Message.info({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
+                        break;
                     default:
                         break;
                 }
@@ -189,6 +217,12 @@ export default {
                                 content: `${obj[msg]}`
                             });
                         }
+                        break;
+                    case 500:
+                        Message.info({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
                         break;
                     default:
                         break;
@@ -218,6 +252,12 @@ export default {
                             });
                         }
                         break;
+                    case 500:
+                        Message.info({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
+                        break;
                     default:
                         break;
                 }
@@ -243,6 +283,12 @@ export default {
                                 content: `${obj[msg]}`
                             });
                         }
+                        break;
+                    case 500:
+                        Message.info({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
                         break;
                     default:
                         break;
@@ -270,6 +316,12 @@ export default {
                             });
                         }
                         break;
+                    case 500:
+                        Message.info({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
+                        break;
                     default:
                         break;
                 }
@@ -295,6 +347,12 @@ export default {
                                 content: `${obj[msg]}`
                             });
                         }
+                        break;
+                    case 500:
+                        Message.info({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
                         break;
                     default:
                         break;
@@ -322,6 +380,12 @@ export default {
                             });
                         }
                         break;
+                    case 500:
+                        Message.info({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
+                        break;
                     default:
                         break;
                 }
@@ -330,7 +394,9 @@ export default {
         async getRiderDailyEarning({ commit }, payload) {
             try {
                 Spin.show();
-                const { status, data } = await Http.rider_daily_earning(payload);
+                const { status, data } = await Http.rider_daily_earning(
+                    payload
+                );
                 if (status === 200) {
                     commit("SET_RIDER_DAILY_EARNING", data);
                     Spin.hide();
@@ -349,11 +415,51 @@ export default {
                             });
                         }
                         break;
+                    case 500:
+                        Message.info({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
+                        break;
                     default:
                         break;
                 }
             }
         },
+        async getRiderCountPerDay({ commit }, payload) {
+            try {
+                Spin.show();
+                const { status, data } = await Http.rider_count_per_day(
+                    payload
+                );
+                if (status === 200) {
+                    commit("SET_RIDER_COUNT_PER_DAY", data);
+                    Spin.hide();
+                }
+            } catch (error) {
+                Spin.hide();
+                const { status, data } = error.response;
+                switch (status) {
+                    case 422:
+                        let obj = data.errors;
+                        for (let msg in obj) {
+                            Message.error({
+                                background: true,
+                                content: `${obj[msg]}`
+                            });
+                        }
+                        break;
+                    case 500:
+                        Message.info({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     },
     getters: {
         totalRiderTransaction(state) {
@@ -603,6 +709,21 @@ export default {
                 return state.Unfounds.data.length;
             } else {
                 return 0;
+            }
+        },
+        totalRiderCountPerDay(state) {
+            let total_rider = 0,
+                total_transaction = 0;
+
+            if (state.RiderCountPerDay.length) {
+                state.RiderCountPerDay.forEach(d => {
+                    total_rider += d.no_of_riders;
+                });
+                state.RiderCountPerDay.forEach(d => {
+                    total_transaction += d.no_of_transaction;
+                });
+
+                return { total_rider, total_transaction };
             }
         }
     }

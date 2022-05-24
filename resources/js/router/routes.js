@@ -56,6 +56,7 @@ import tenant_most_order from "./../components/foods/pages/report/TenantMostOrde
 import source_most_order from "./../components/foods/pages/report/SourceMostOrder";
 import rider_transaction from "./../components/foods/pages/report/RiderTransaction";
 import rider_daily_earning from "./../components/foods/pages/report/RiderDailyEarning";
+import rider_count_per_day from "./../components/foods/pages/report/RiderCountPerDay";
 
 import Redirect from "./../Usable/Redirect";
 
@@ -251,6 +252,11 @@ const route = [
         path: "/foods/report/rider_daily_earning",
         name: "rider_daily_earning",
         component: rider_daily_earning
+    },
+    {
+        path: "/foods/report/rider_count_per_day",
+        name: "rider_count_per_day",
+        component: rider_count_per_day
     },
     {
         path: "/dashboard",

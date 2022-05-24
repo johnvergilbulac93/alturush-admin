@@ -36,21 +36,7 @@ export const totalOrderAmount = state => {
         };
     }
 };
-export const totalRiderCountPerDay = state => {
-    let total_rider = 0,
-        total_transaction = 0;
 
-    if (state.RiderCountPerDay.length) {
-        state.RiderCountPerDay.forEach(d => {
-            total_rider += d.no_of_riders;
-        });
-        state.RiderCountPerDay.forEach(d => {
-            total_transaction += d.no_of_transaction;
-        });
-
-        return { total_rider, total_transaction };
-    }
-};
 export const totalHourlyCallMonitoring = state => {
     let total_x = [],
         total_y = [],
