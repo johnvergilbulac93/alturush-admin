@@ -99,9 +99,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
@@ -133,9 +133,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
@@ -167,9 +167,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
@@ -199,9 +199,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
@@ -231,9 +231,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
@@ -265,9 +265,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
@@ -297,9 +297,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
@@ -329,9 +329,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
@@ -361,9 +361,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
@@ -393,9 +393,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
@@ -428,9 +428,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
@@ -462,9 +462,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
@@ -494,9 +494,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
@@ -528,9 +528,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
@@ -560,9 +560,9 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.error({
-                            background: true,
-                            content: "Internal Server Error."
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
                         });
                         break;
                     default:
