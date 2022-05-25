@@ -45,14 +45,14 @@
             <hr />
             <div class="w-full flex justify-end items-center gap-2 ">
                 <Button
-                    type="success"
+                    type="primary"
                     icon="ios-paper-outline"
                     :disabled="!Liquidation.cashier_details"
                     @click="toExcel('xlsx')"
                     >Excel</Button
                 >
                 <Button
-                    type="success"
+                    type="primary"
                     icon="ios-print-outline"
                     :disabled="!Liquidation.cashier_details"
                     @click="toPDF()"

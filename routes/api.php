@@ -78,7 +78,7 @@ Route::middleware('auth:api')->group(function () {
             Route::get('/getOrderDataReport',                   'API\ReportController@getOrderDataReport');
             Route::get('/getMostCancelledItem',                 'API\ReportController@getMostCancelledItem');
             Route::get('/getHourlyCallMonitoring',              'API\ReportController@getHourlyCallMonitoring');
-            Route::get('/getCommission',                         'API\ReportController@getCommission');
+            Route::get('/getCommission',                        'API\ReportController@getCommission');
         });
         //End Report Foods
 

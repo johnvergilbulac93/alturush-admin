@@ -14,7 +14,8 @@ export default {
         SourceMostOrder: [],
         RiderTransaction: [],
         RiderDailyEarning: [],
-        RiderCountPerDay: []
+        RiderCountPerDay: [],
+        OrderDataReport: []
     },
     mutations: {
         SET_LIQUIDATION(state, payload) {
@@ -61,6 +62,9 @@ export default {
         },
         SET_RIDER_COUNT_PER_DAY(state, payload) {
             state.RiderCountPerDay = payload;
+        },
+        SET_ORDER_DATA_REPORT(state, payload) {
+            state.OrderDataReport = payload;
         }
     },
     actions: {
@@ -87,7 +91,7 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.info({
+                        Message.error({
                             background: true,
                             content: "Internal Server Error."
                         });
@@ -121,7 +125,7 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.info({
+                        Message.error({
                             background: true,
                             content: "Internal Server Error."
                         });
@@ -148,14 +152,14 @@ export default {
                     case 422:
                         let obj = data.errors;
                         for (let msg in obj) {
-                            Message.info({
+                            Message.error({
                                 background: true,
                                 content: `${obj[msg]}`
                             });
                         }
                         break;
                     case 500:
-                        Message.info({
+                        Message.error({
                             background: true,
                             content: "Internal Server Error."
                         });
@@ -187,7 +191,7 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.info({
+                        Message.error({
                             background: true,
                             content: "Internal Server Error."
                         });
@@ -219,7 +223,7 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.info({
+                        Message.error({
                             background: true,
                             content: "Internal Server Error."
                         });
@@ -253,7 +257,7 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.info({
+                        Message.error({
                             background: true,
                             content: "Internal Server Error."
                         });
@@ -285,7 +289,7 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.info({
+                        Message.error({
                             background: true,
                             content: "Internal Server Error."
                         });
@@ -317,7 +321,7 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.info({
+                        Message.error({
                             background: true,
                             content: "Internal Server Error."
                         });
@@ -349,7 +353,7 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.info({
+                        Message.error({
                             background: true,
                             content: "Internal Server Error."
                         });
@@ -381,7 +385,7 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.info({
+                        Message.error({
                             background: true,
                             content: "Internal Server Error."
                         });
@@ -416,7 +420,7 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.info({
+                        Message.error({
                             background: true,
                             content: "Internal Server Error."
                         });
@@ -450,7 +454,39 @@ export default {
                         }
                         break;
                     case 500:
-                        Message.info({
+                        Message.error({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            }
+        },
+        async getOrderDataReport({ commit }, payload) {
+            try {
+                Spin.show();
+                const { status, data } = await Http.order_data_report(payload);
+                if (status === 200) {
+                    commit("SET_ORDER_DATA_REPORT", data);
+                    Spin.hide();
+                }
+            } catch (error) {
+                Spin.hide();
+                const { status, data } = error.response;
+                switch (status) {
+                    case 422:
+                        let obj = data.errors;
+                        for (let msg in obj) {
+                            Message.error({
+                                background: true,
+                                content: `${obj[msg]}`
+                            });
+                        }
+                        break;
+                    case 500:
+                        Message.error({
                             background: true,
                             content: "Internal Server Error."
                         });

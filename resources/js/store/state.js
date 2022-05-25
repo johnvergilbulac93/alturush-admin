@@ -47,7 +47,6 @@ export default {
     Transactions: [],
     Accountability: [],
 
-    OrderDataReport: [],
     MostCancelledItems: [],
     HourlyCallMonitoring: [],
     Commission: [],

@@ -1,54 +1,51 @@
 <template>
-    <div class="w-full mt-2">
-        <table
-            class="min-w-full divide-y divide-gray-300"
-            id="exportable_table"
-        >
-            <thead class="border bg-gray-100  tracking-normal">
-                <tr class="border">
-                    <th class="border p-2 text-center">#</th>
-                    <th class="border p-2 text-left">
+    <div class="w-full mt-2 border rounded">
+        <table class="min-w-full " id="order_data_report_table">
+            <thead class=" border-b tracking-normal">
+                <tr class="">
+                    <th class=" p-2 text-center">#</th>
+                    <th class=" p-2 text-left">
                         Date/Time
                     </th>
-                    <th class="border p-2 text-left">Ticket Id</th>
-                    <th class="border p-2 text-center">
+                    <th class=" p-2 text-left">Ticket Id</th>
+                    <th class=" p-2 text-center">
                         Contact #
                     </th>
-                    <th class="border p-2 text-left">
+                    <th class=" p-2 text-left">
                         Store
                     </th>
-                    <th class="border p-2 text-left">
+                    <th class=" p-2 text-left">
                         Remarks
                     </th>
-                    <th class="border p-2 text-center">
+                    <th class=" p-2 text-center">
                         Mode of Order
                     </th>
-                    <th class="border p-2 text-left">
+                    <th class=" p-2 text-left">
                         Name
                     </th>
-                    <th class="border p-2 text-left">
+                    <th class=" p-2 text-left">
                         Address
                     </th>
-                    <th class="border p-2 text-left">
+                    <th class=" p-2 text-left">
                         Town
                     </th>
-                    <th class="border p-2 text-left">
+                    <th class=" p-2 text-left">
                         Source
                     </th>
                 </tr>
             </thead>
             <tbody class="tbody">
-                <tr v-if="!order_data_details.length">
-                    <td class="td text-center" colspan="11">
-                        NO RESULT FOUND
+                <tr v-if="!OrderDataReport.length">
+                    <td class="td text-center font-semibold" colspan="11">
+                        NO DATA AVAILABLE
                     </td>
                 </tr>
-                <tr v-for="(data, i) in order_data_details" :key="i">
+                <tr v-for="(data, i) in OrderDataReport" :key="i">
                     <td class="td text-center">
                         {{ i + 1 }}
                     </td>
                     <td class="td text-left">
-                        {{ data.date_tim | formatDateNoTime }}
+                        {{ data.date_tim | formatDate2 }}
                     </td>
                     <td class="td text-left">
                         {{ data.ticket }}
@@ -78,8 +75,12 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
-    name: "OrderDataReportDetails",
-    props: ["order_data_details"]
+    name: "TblOrderDataReportDetails",
+    computed: {
+        ...mapState("Report", ["OrderDataReport"])
+    }
 };
 </script>

@@ -41,14 +41,14 @@
         <hr />
         <div class="w-full flex justify-end items-center gap-2  ">
             <Button
-                type="success"
+                type="primary"
                 icon="ios-paper-outline"
                 @click="toExcel('xlsx')"
                 :disabled="!Unfounds.data"
                 >Excel</Button
             >
             <Button
-                type="success"
+                type="primary"
                 icon="ios-print-outline"
                 @click="toPDF()"
                 :disabled="!Unfounds.data"

@@ -105,12 +105,7 @@
                     </tr>
                 </template>
             </tbody>
-
-
-
         </table>
-
-
     </div>
 </template>
 

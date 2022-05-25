@@ -70,10 +70,13 @@ Vue.filter("dateformat", function(created) {
 Vue.filter("formatDate", date =>
     moment(date).format("MMMM Do YYYY, h:mm:ss a")
 );
+Vue.filter("formatDate2", date => moment(date).format("l"));
 Vue.filter("formatDateNoTime", date => moment(date).format("MMM DD, YYYY"));
 Vue.filter("formatDateMonthOnly", date => moment(date).format("MMMM"));
 Vue.filter("formatTime", date => moment(date).format("h:mm A"));
 Vue.filter("formatTime2", time => moment(time, ["HH.mm"]).format("hh:mm a"));
+
+
 
 Vue.filter("toCurrency", function(value) {
     if (typeof value !== "number") {

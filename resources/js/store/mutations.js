@@ -104,9 +104,8 @@ export const SET_STORE_PRICE_GROUP = (state, payload) => {
     state.StorePriceGroup = payload;
 };
 
-export const SET_ORDER_DATA_REPORT = (state, payload) => {
-    state.OrderDataReport = payload;
-};
+
+
 export const SET_MOST_CANCELLED_ITEMS = (state, payload) => {
     state.MostCancelledItems = payload;
 };

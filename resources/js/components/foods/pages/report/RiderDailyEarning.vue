@@ -5,7 +5,12 @@
             <div class="flex justify-between items-center">
                 <div class="w-64">
                     <label class="block">Filter by Type:</label>
-                    <Select class="form" v-model="filter.type" @on-change="fetch" placeholder="Select type">
+                    <Select
+                        class="form"
+                        v-model="filter.type"
+                        @on-change="fetch"
+                        placeholder="Select type"
+                    >
                         <Option value="1">Detailed</Option>
                         <Option value="2">Summary</Option>
                     </Select>
@@ -14,37 +19,63 @@
                 <div class="flex justify-end gap-2 items-center">
                     <div class="w-auto">
                         <label class="block">Filter by Date From</label>
-                        <DatePicker @on-change="fetch()" v-model="filter.dateFrom" type="date" placeholder="Select Date"
-                            style="width: 218px" />
+                        <DatePicker
+                            @on-change="fetch()"
+                            v-model="filter.dateFrom"
+                            type="date"
+                            placeholder="Select Date"
+                            style="width: 218px"
+                        />
                     </div>
                     <div class="w-auto">
                         <label class="block">Filter by Date To</label>
-                        <DatePicker @on-change="fetch()" v-model="filter.dateTo" type="date" placeholder="Select Date"
-                            style="width: 218px" />
+                        <DatePicker
+                            @on-change="fetch()"
+                            v-model="filter.dateTo"
+                            type="date"
+                            placeholder="Select Date"
+                            style="width: 218px"
+                        />
                     </div>
                 </div>
             </div>
             <hr />
-            <div class="flex justify-end items-center gap-2" v-if="filter.type == 2">
-                <Button type="primary" icon="ios-paper-outline" :disabled="RiderDailyEarning.grandTotal == 0"
-                    @click="toExcel('xlsx')">Excel</Button>
-                <Button type="primary" icon="ios-print-outline" @click="toPDF()"
-                    :disabled="RiderDailyEarning.grandTotal == 0">Print</Button>
+            <div
+                class="flex justify-end items-center gap-2"
+                v-if="filter.type == 2"
+            >
+                <Button
+                    type="primary"
+                    icon="ios-paper-outline"
+                    :disabled="RiderDailyEarning.grandTotal == 0"
+                    @click="toExcel('xlsx')"
+                    >Excel</Button
+                >
+                <Button
+                    type="primary"
+                    icon="ios-print-outline"
+                    @click="toPDF()"
+                    :disabled="RiderDailyEarning.grandTotal == 0"
+                    >Print</Button
+                >
             </div>
             <div class="flex flex-col items-center">
-                <span class="font-semibold text-lg block">
+                <span class="font-semibold text-lg ">
                     LIST OF RIDER(S) DAILY EARNING
                 </span>
-                <span v-if="filter.type == 1" class="font-semibold block">DETAILED REPORT</span>
-                <span v-if="filter.type == 2" class="font-semibold block">SUMMARY REPORT</span>
-                <span class="text-xs block">
+                <span v-if="filter.type == 1" class="font-semibold "
+                    >DETAILED REPORT</span
+                >
+                <span v-if="filter.type == 2" class="font-semibold "
+                    >SUMMARY REPORT</span
+                >
+                <span class="text-xs ">
                     AS OF: &nbsp; {{ filter.dateFrom | formatDateNoTime }} To
                     {{ filter.dateTo | formatDateNoTime }}.
                 </span>
 
-                <riderdetailed :data_rider_earning="RiderDailyEarning" v-if="filter.type == 1" />
-                <ridersummary :data_rider_earning="RiderDailyEarning" v-if="filter.type == 2" />
-
+                <riderdetailed v-if="filter.type == 1" />
+                <ridersummary v-if="filter.type == 2" />
             </div>
         </div>
     </div>
@@ -71,10 +102,10 @@ export default {
         };
     },
     computed: {
-        ...mapState('Report', ["RiderDailyEarning"])
+        ...mapState("Report", ["RiderDailyEarning"])
     },
     methods: {
-        ...mapActions('Report', ["getRiderDailyEarning"]),
+        ...mapActions("Report", ["getRiderDailyEarning"]),
         fetch() {
             if (this.filter.dateFrom > this.filter.dateTo) {
                 this.$Message.error({
@@ -90,22 +121,21 @@ export default {
             this.getRiderDailyEarning(payload);
         },
         toExcel(type, fn, dl) {
-
             let _from = moment(this.filter.dateFrom).format("MMM DD, YYYY");
             let _to = moment(this.filter.dateTo).format("MMM DD, YYYY");
 
             const xlsName = `RIDER-DAILY-EARNING-${_from}-${_to}.`;
             const elt = document.getElementById("rider_daily_earning_table");
-            console.log(elt)
+            console.log(elt);
             const wb = XLSX.utils.table_to_book(elt, {
                 sheet: "RIDER DAILY EARNING"
             });
             return dl
                 ? XLSX.write(wb, {
-                    bookType: type,
-                    bookSST: true,
-                    type: "base64"
-                })
+                      bookType: type,
+                      bookSST: true,
+                      type: "base64"
+                  })
                 : XLSX.writeFile(wb, fn || xlsName + (type || "xlsx"));
         },
         toPDF() {
@@ -177,7 +207,6 @@ export default {
                 showFoot: "lastPage"
             });
             window.open(doc.output("bloburl"));
-
         }
     },
     mounted() {

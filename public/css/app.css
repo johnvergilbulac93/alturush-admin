@@ -1781,12 +1781,24 @@ body{
   font-family: Rubik, sans-serif;
 }
 
+tr{
+  border-bottom-width: 1px;
+}
+
+tr:last-child{
+  border-bottom-width: 0px;
+}
+tfoot, tr{
+  border-top-width: 1px;
+}
+tfoot:last-child, tr:last-child{
+  border-top-width: 0px;
+}
 .tbody{
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 .td{
-  border-bottom-width: 1px;
   padding: 0.5rem;
   font-size: 0.75rem;
   line-height: 1rem;

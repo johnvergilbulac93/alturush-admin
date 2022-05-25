@@ -614,7 +614,6 @@ class ReportController extends Controller
         }
 
         return $this->orderByHighestEarnings($riderDailyEarnings);
-
     }
     private function orderByHighestEarnings($riderDailyEarnings)
     {
@@ -654,7 +653,25 @@ class ReportController extends Controller
         $dateFrom = Carbon::parse($request->dateFrom)->toDateTimeString();
         $dateTo = Carbon::parse($request->dateTo)->toDateTimeString();
 
-        if ($request->platform) {
+        if ($request->platform === 'all') {
+            $data = TomsCustomerOrders::join('tickets', 'tickets.id', 'toms_customer_orders.ticket_id')
+                ->join('customer_delivery_infos', 'customer_delivery_infos.ticket_id', 'tickets.id')
+                ->join('barangays', 'barangays.brgy_id', 'customer_delivery_infos.barangay_id')
+                ->join('towns', 'towns.town_id', 'barangays.town_id')
+                ->join('province', 'province.prov_id', 'towns.prov_id')
+                ->join('order_sources', 'order_sources.id', 'tickets.source_id')
+                ->join('fd_products', 'fd_products.product_id', 'toms_customer_orders.product_id')
+                ->join('locate_tenants', 'locate_tenants.tenant_id', 'fd_products.tenant_id')
+                ->whereDate('submitted_at', '>=', $dateFrom)
+                ->whereDate('submitted_at', '<=', $dateTo)
+                ->where([
+                    ['tickets.order_type_stat', 0],
+                    ['toms_customer_orders.canceled_status', 0],
+                    ['tickets.cancel_status', 0]
+                ])
+                ->selectRaw('tickets.ticket, toms_customer_orders.ticket_id, locate_tenants.tenant_id, tenant, pickup_at, ticket, mobile_number, tenant, type, toms_customer_orders.mop, firstname, lastname, street_purok, brgy_name, town_name, zipcode, prov_name, source')
+                ->get();
+        } else {
             $data = TomsCustomerOrders::join('tickets', 'tickets.id', 'toms_customer_orders.ticket_id')
                 ->join('customer_delivery_infos', 'customer_delivery_infos.ticket_id', 'tickets.id')
                 ->join('barangays', 'barangays.brgy_id', 'customer_delivery_infos.barangay_id')
@@ -672,24 +689,6 @@ class ReportController extends Controller
                     ['tickets.type', $request->platform]
                 ])
                 ->selectRaw('toms_customer_orders.ticket_id, locate_tenants.tenant_id, tenant, pickup_at, ticket, mobile_number, tenant, type, toms_customer_orders.mop, firstname, lastname, street_purok, brgy_name, town_name, zipcode, prov_name, source')
-                ->get();
-        } else {
-            $data = TomsCustomerOrders::join('tickets', 'tickets.id', 'toms_customer_orders.ticket_id')
-                ->join('customer_delivery_infos', 'customer_delivery_infos.ticket_id', 'tickets.id')
-                ->join('barangays', 'barangays.brgy_id', 'customer_delivery_infos.barangay_id')
-                ->join('towns', 'towns.town_id', 'barangays.town_id')
-                ->join('province', 'province.prov_id', 'towns.prov_id')
-                ->join('order_sources', 'order_sources.id', 'tickets.source_id')
-                ->join('fd_products', 'fd_products.product_id', 'toms_customer_orders.product_id')
-                ->join('locate_tenants', 'locate_tenants.tenant_id', 'fd_products.tenant_id')
-                ->whereDate('submitted_at', '>=', $dateFrom)
-                ->whereDate('submitted_at', '<=', $dateTo)
-                ->where([
-                    ['tickets.order_type_stat', 0],
-                    ['toms_customer_orders.canceled_status', 0],
-                    ['tickets.cancel_status', 0]
-                ])
-                ->selectRaw('tickets.ticket, toms_customer_orders.ticket_id, locate_tenants.tenant_id, tenant, pickup_at, ticket, mobile_number, tenant, type, toms_customer_orders.mop, firstname, lastname, street_purok, brgy_name, town_name, zipcode, prov_name, source')
                 ->get();
         }
         $data_result = array();

@@ -307,16 +307,6 @@ export const userChangeUsername = async ({ commit }, { user }) => {
         }, 5000);
     }
 };
-export const getOrderDataReport = async ({ commit }, { filter }) => {
-    try {
-        const { status, data } = await Report.order_data_report(filter);
-        if (status === 200) {
-            commit("SET_ORDER_DATA_REPORT", data);
-        }
-    } catch (error) {
-        console.log(error);
-    }
-};
 export const getMostCancelledItem = async ({ commit }) => {
     try {
         const { status, data } = await Report.most_cancelled_item();
