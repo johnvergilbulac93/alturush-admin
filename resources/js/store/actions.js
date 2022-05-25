@@ -323,16 +323,6 @@ export const getMostCancelledItem = async ({ commit }) => {
         console.log(error);
     }
 };
-export const getHourlyCallMonitoring = async ({ commit }, { filter }) => {
-    try {
-        const { status, data } = await Report.hourly_call_monitoring(filter);
-        if (status === 200) {
-            commit("SET_HOURLY_CALL_MONITORING", data);
-        }
-    } catch (error) {
-        console.log(error);
-    }
-};
 export const getCommission = async ({ commit }, { filter }) => {
     try {
         const { status, data } = await Report.commission(filter);

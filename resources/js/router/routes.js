@@ -59,6 +59,7 @@ import rider_daily_earning from "./../components/foods/pages/report/RiderDailyEa
 import rider_count_per_day from "./../components/foods/pages/report/RiderCountPerDay";
 import order_data_report from "./../components/foods/pages/report/OrderDataReport";
 import hourly_call_monitoring from "./../components/foods/pages/report/HourlyCallMonitoring";
+import alturush_commission from "./../components/foods/pages/report/AlturushCommission";
 
 import Redirect from "./../Usable/Redirect";
 
@@ -269,6 +270,11 @@ const routes = [
         path: "/foods/report/hourly_call_monitoring",
         name: "hourly_call_monitoring",
         component: hourly_call_monitoring
+    },
+    {
+        path: "/foods/report/alturush_commission",
+        name: "alturush_commission",
+        component: alturush_commission
     },
     {
         path: "/dashboard",

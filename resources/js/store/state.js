@@ -48,7 +48,7 @@ export default {
     Accountability: [],
 
     MostCancelledItems: [],
-    HourlyCallMonitoring: [],
+
     Commission: [],
     SelectedTenant: [],
     FoodUsertype: [],

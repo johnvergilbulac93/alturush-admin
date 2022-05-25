@@ -84,17 +84,20 @@ export default {
         };
     },
     computed: {
-        ...mapState(["HourlyCallMonitoring", "Stores"]),
-        ...mapGetters(["totalHourlyCallMonitoring"])
+        ...mapState("Report", ["HourlyCallMonitoring", "Stores"]),
+        ...mapGetters("Report", ["totalHourlyCallMonitoring"]),
+        ...mapState(["Stores"])
     },
     methods: {
-        ...mapActions(["getHourlyCallMonitoring", "getStore"]),
+        ...mapActions("Report", ["getHourlyCallMonitoring", "getStore"]),
+        ...mapActions(["getStore"]),
+
         fetch() {
-            let filter = {
+            let payload = {
                 date: moment(this.filter.dateNow).format("YYYY-MM-DD"),
                 store: this.filter.store
             };
-            this.getHourlyCallMonitoring({ filter });
+            this.getHourlyCallMonitoring(payload);
         },
         toPDF() {
             let _from = moment(this.filter.dateFrom).format("MMM DD, YYYY");
@@ -120,7 +123,9 @@ export default {
                 didDrawPage: data => {
                     console.log(data);
                     var str = "Page " + doc.internal.getNumberOfPages();
-                    var runtime = "Run Time: " + moment(this.$root.serverDateTime).format("LLLL");
+                    var runtime =
+                        "Run Time: " +
+                        moment(this.$root.serverDateTime).format("LLLL");
 
                     doc.setFontSize(8);
                     var pageSize = doc.internal.pageSize;

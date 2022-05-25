@@ -91,7 +91,7 @@
                 <MenuItem name="8-7" to="/foods/report/rider_count_per_day">Rider Count Per Day</MenuItem>
                 <MenuItem name="8-8" to="/foods/report/order_data_report">Order Data Report</MenuItem>
                 <MenuItem name="8-9" to="/foods/report/hourly_call_monitoring">Hourly Call Monitoring</MenuItem>
-
+                <MenuItem name="8-0" to="/foods/report/alturush_commission">Alturush Commission</MenuItem>
             </Submenu>
         </Submenu>
     </Menu>

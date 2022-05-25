@@ -15,7 +15,8 @@ export default {
         RiderTransaction: [],
         RiderDailyEarning: [],
         RiderCountPerDay: [],
-        OrderDataReport: []
+        OrderDataReport: [],
+        HourlyCallMonitoring: []
     },
     mutations: {
         SET_LIQUIDATION(state, payload) {
@@ -65,6 +66,9 @@ export default {
         },
         SET_ORDER_DATA_REPORT(state, payload) {
             state.OrderDataReport = payload;
+        },
+        SET_HOURLY_MONITORING(state, payload) {
+            state.HourlyCallMonitoring = payload;
         }
     },
     actions: {
@@ -495,6 +499,40 @@ export default {
                         break;
                 }
             }
+        },
+        async getHourlyCallMonitoring({ commit }, payload) {
+            try {
+                Spin.show();
+                const { status, data } = await Http.hourly_call_monitoring(
+                    payload
+                );
+                if (status === 200) {
+                    commit("SET_HOURLY_MONITORING", data);
+                    Spin.hide();
+                }
+            } catch (error) {
+                Spin.hide();
+                const { status, data } = error.response;
+                switch (status) {
+                    case 422:
+                        let obj = data.errors;
+                        for (let msg in obj) {
+                            Message.error({
+                                background: true,
+                                content: `${obj[msg]}`
+                            });
+                        }
+                        break;
+                    case 500:
+                        Message.error({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     },
     getters: {
@@ -761,6 +799,35 @@ export default {
 
                 return { total_rider, total_transaction };
             }
+        },
+        totalHourlyCallMonitoring(state) {
+            let total_x = [],
+                total_y = [],
+                total = 0;
+            let data = state.HourlyCallMonitoring;
+            if (data.result || data.result2) {
+                for (let i = 0; i < data.result2.length; i++) {
+                    var ytrans_num = 0;
+                    var y_data = data.result2[i]["time_data"];
+                    y_data.filter(d => {
+                        ytrans_num += d.trans_num;
+                    });
+
+                    total_y.push(ytrans_num);
+                }
+
+                for (let i = 0; i < data.result.length; i++) {
+                    var xtrans_num = 0;
+                    for (let iz = 0; iz < data.result2.length; iz++) {
+                        xtrans_num +=
+                            data.result2[iz]["time_data"][i]["trans_num"];
+                    }
+                    total_x.push(xtrans_num);
+                }
+            }
+            total_x.filter(d => (total += d));
+
+            return { total_x, total_y, total };
         }
     }
 };

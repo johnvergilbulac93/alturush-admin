@@ -63,8 +63,8 @@ import { mapGetters, mapState } from "vuex";
 export default {
     name: "TblHourlyCallMonitoring",
     computed: {
-        ...mapState(["HourlyCallMonitoring", "Stores"]),
-        ...mapGetters(["totalHourlyCallMonitoring"])
+        ...mapState("Report", ["HourlyCallMonitoring"]),
+        ...mapGetters("Report", ["totalHourlyCallMonitoring"])
     }
 };
 </script>

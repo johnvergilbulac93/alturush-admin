@@ -37,34 +37,6 @@ export const totalOrderAmount = state => {
     }
 };
 
-export const totalHourlyCallMonitoring = state => {
-    let total_x = [],
-        total_y = [],
-        total = 0;
-    let data = state.HourlyCallMonitoring;
-    if (data.result || data.result2) {
-        for (let i = 0; i < data.result2.length; i++) {
-            var ytrans_num = 0;
-            var y_data = data.result2[i]["time_data"];
-            y_data.filter(d => {
-                ytrans_num += d.trans_num;
-            });
-
-            total_y.push(ytrans_num);
-        }
-
-        for (let i = 0; i < data.result.length; i++) {
-            var xtrans_num = 0;
-            for (let iz = 0; iz < data.result2.length; iz++) {
-                xtrans_num += data.result2[iz]["time_data"][i]["trans_num"];
-            }
-            total_x.push(xtrans_num);
-        }
-    }
-    total_x.filter(d => (total += d));
-
-    return { total_x, total_y, total };
-};
 export const totalCommission = state => {
     let total_purchase = 0,
         total_percentage = 0;
