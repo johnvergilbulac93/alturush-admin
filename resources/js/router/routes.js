@@ -58,6 +58,7 @@ import rider_transaction from "./../components/foods/pages/report/RiderTransacti
 import rider_daily_earning from "./../components/foods/pages/report/RiderDailyEarning";
 import rider_count_per_day from "./../components/foods/pages/report/RiderCountPerDay";
 import order_data_report from "./../components/foods/pages/report/OrderDataReport";
+import hourly_call_monitoring from "./../components/foods/pages/report/HourlyCallMonitoring";
 
 import Redirect from "./../Usable/Redirect";
 
@@ -263,6 +264,11 @@ const routes = [
         path: "/foods/report/order_data_report",
         name: "order_data_report",
         component: order_data_report
+    },
+    {
+        path: "/foods/report/hourly_call_monitoring",
+        name: "hourly_call_monitoring",
+        component: hourly_call_monitoring
     },
     {
         path: "/dashboard",

@@ -743,7 +743,7 @@ class ReportController extends Controller
         $date = Carbon::parse($request->date)->toDateTimeString();
         $store = $request->store;
 
-        if ($store == '') {
+        if ($store ===  'all') {
             $data = TenantFood::join('locate_business_units', 'locate_business_units.bunit_code', 'locate_tenants.bunit_code')
                 ->where(['locate_tenants.active' => true])
                 ->select('locate_business_units.acroname as bunit_acroname', 'locate_tenants.*', 'locate_business_units.*')

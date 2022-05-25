@@ -93,10 +93,10 @@ export default {
         };
     },
     computed: {
-        ...mapState('Report',["OrderDataReport"])
+        ...mapState("Report", ["OrderDataReport"])
     },
     methods: {
-        ...mapActions('Report',["getOrderDataReport"]),
+        ...mapActions("Report", ["getOrderDataReport"]),
         fetch() {
             if (this.filter.dateFrom > this.filter.dateTo) {
                 this.$Message.error({
