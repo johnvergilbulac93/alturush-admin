@@ -816,13 +816,13 @@ class ReportController extends Controller
 
         $result = array();
 
-        if ($request->platform == '') {
+        if ($request->platform === 'all') {
             $data = Ticket::selectRaw("ticket_id, ticket, type, tickets.created_at as ticket_created, concat(firstname, ' ', lastname) as customer_name")->join('customer_delivery_infos', 'customer_delivery_infos.ticket_id', 'tickets.id')
                 ->join('barangays', 'barangays.brgy_id', 'customer_delivery_infos.barangay_id')
                 ->join('towns', 'towns.town_id', 'barangays.town_id')
                 ->join('province', 'province.prov_id', 'towns.prov_id')
                 ->join('order_sources', 'order_sources.id', 'tickets.source_id')
-                ->where(['tickets.cancel_status' => false, 'tickets.order_type_stat' => $request->category ? true : false])
+                ->where(['tickets.cancel_status' => false, 'tickets.order_type_stat' => $request->category != 0 ? true : false])
                 ->whereDate('tickets.created_at', '>=', $dateFrom)
                 ->whereDate('tickets.created_at', '<=',  $dateTo)
                 ->orderBy('tickets.id', 'asc')
@@ -833,7 +833,7 @@ class ReportController extends Controller
                 ->join('towns', 'towns.town_id', 'barangays.town_id')
                 ->join('province', 'province.prov_id', 'towns.prov_id')
                 ->join('order_sources', 'order_sources.id', 'tickets.source_id')
-                ->where(['tickets.cancel_status' => false, 'tickets.type' => $request->platform, 'tickets.order_type_stat' => $request->category ? true : false])
+                ->where(['tickets.cancel_status' => false, 'tickets.type' => $request->platform, 'tickets.order_type_stat' => $request->category != 0  ? true : false])
                 ->whereDate('tickets.created_at', '>=', $dateFrom)
                 ->whereDate('tickets.created_at', '<=', $dateTo)
                 ->orderBy('tickets.id', 'asc')

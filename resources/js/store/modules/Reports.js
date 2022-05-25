@@ -16,7 +16,8 @@ export default {
         RiderDailyEarning: [],
         RiderCountPerDay: [],
         OrderDataReport: [],
-        HourlyCallMonitoring: []
+        HourlyCallMonitoring: [],
+        Commission: []
     },
     mutations: {
         SET_LIQUIDATION(state, payload) {
@@ -69,6 +70,9 @@ export default {
         },
         SET_HOURLY_MONITORING(state, payload) {
             state.HourlyCallMonitoring = payload;
+        },
+        SET_COMMISSION(state, payload) {
+            state.Commission = payload;
         }
     },
     actions: {
@@ -533,6 +537,38 @@ export default {
                         break;
                 }
             }
+        },
+        async getCommission({ commit }, payload) {
+            try {
+                Spin.show();
+                const { status, data } = await Http.commission(payload);
+                if (status === 200) {
+                    commit("SET_COMMISSION", data);
+                    Spin.hide();
+                }
+            } catch (error) {
+                Spin.hide();
+                const { status, data } = error.response;
+                switch (status) {
+                    case 422:
+                        let obj = data.errors;
+                        for (let msg in obj) {
+                            Message.error({
+                                background: true,
+                                content: `${obj[msg]}`
+                            });
+                        }
+                        break;
+                    case 500:
+                        Message.error({
+                            background: true,
+                            content: "Internal Server Error."
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     },
     getters: {
@@ -828,6 +864,20 @@ export default {
             total_x.filter(d => (total += d));
 
             return { total_x, total_y, total };
+        },
+        totalCommission(state) {
+            let total_purchase = 0,
+                total_percentage = 0;
+
+            if (state.Commission.length) {
+                state.Commission.forEach(d => {
+                    total_purchase += d.total_purchase;
+                });
+                state.Commission.forEach(d => {
+                    total_percentage += parseFloat(d.total_purchase * 0.1);
+                });
+                return { total_purchase, total_percentage };
+            }
         }
     }
 };

@@ -323,16 +323,7 @@ export const getMostCancelledItem = async ({ commit }) => {
         console.log(error);
     }
 };
-export const getCommission = async ({ commit }, { filter }) => {
-    try {
-        const { status, data } = await Report.commission(filter);
-        if (status === 200) {
-            commit("SET_COMMISSION", data);
-        }
-    } catch (error) {
-        console.log(error);
-    }
-};
+
 
 export const getSelectedTenant = async ({ commit }, { id }) => {
     try {

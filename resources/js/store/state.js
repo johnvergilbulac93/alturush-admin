@@ -49,7 +49,6 @@ export default {
 
     MostCancelledItems: [],
 
-    Commission: [],
     SelectedTenant: [],
     FoodUsertype: [],
 

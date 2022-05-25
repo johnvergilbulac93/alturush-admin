@@ -109,12 +109,8 @@ export const SET_STORE_PRICE_GROUP = (state, payload) => {
 export const SET_MOST_CANCELLED_ITEMS = (state, payload) => {
     state.MostCancelledItems = payload;
 };
-export const SET_HOURLY_CALL_MONITORING = (state, payload) => {
-    state.HourlyCallMonitoring = payload;
-};
-export const SET_COMMISSION = (state, payload) => {
-    state.Commission = payload;
-};
+
+
 export const SET_SELECTED_TENANT = (state, payload) => {
     state.SelectedTenant = payload;
 };
