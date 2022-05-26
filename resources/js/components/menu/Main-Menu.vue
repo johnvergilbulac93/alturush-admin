@@ -36,7 +36,7 @@
             <MenuItem name="2-15" to="/masterfile/towns">Town(s)</MenuItem>
             <MenuItem name="2-16" to="/masterfile/barangays">Barangay(s)</MenuItem>
             <MenuItem name="2-17" to="/masterfile/minimum_order">Minimum Order</MenuItem>
-            <MenuItem name="2-18" >Location Group Setup</MenuItem>
+            <MenuItem name="2-18" to="/masterfile/location_group_setup">Location Group Setup</MenuItem>
 
 
         </Submenu>

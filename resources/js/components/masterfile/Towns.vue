@@ -1,6 +1,6 @@
 <template>
     <div class="space-y-2">
-        <module-header icon="md-pin" title="Town(s)" />
+        <module-header icon="ios-pin-outline" title="Town(s)" />
         <div class="border p-2">
             <div class="flex justify-end">
                 <Tooltip content="Add" placement="right">

@@ -34,6 +34,7 @@ import province from "./../components/masterfile/Provinces";
 import towns from "./../components/masterfile/Towns";
 import barangay from "./../components/masterfile/Barangay";
 import minimum_order from "./../components/masterfile/Minimum-Order";
+import location_group_setup from "./../components/masterfile/Location-Group";
 
 import product_list from "./../components/goods/pages/Central-item";
 import disable_uom from "./../components/goods/pages/Item-disable-per-uom";
@@ -165,6 +166,11 @@ const routes = [
         path: "/masterfile/minimum_order",
         name: "minimum_order",
         component: minimum_order
+    },
+    {
+        path: "/masterfile/location_group_setup",
+        name: "location_group_setup",
+        component: location_group_setup
     },
     {
         path: "/goods/product_lists",
