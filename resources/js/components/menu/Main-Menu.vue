@@ -13,6 +13,9 @@
                 <Icon type="md-settings" />
                 Masterfile
             </template>
+
+
+
             <MenuItem name="2-1" to="/masterfile/user">Users</MenuItem>
             <MenuItem name="2-2" to="/masterfile/user-type">Usertype(s)</MenuItem>
 
@@ -32,6 +35,10 @@
             <MenuItem name="2-14" to="/masterfile/province">Province(s)</MenuItem>
             <MenuItem name="2-15" to="/masterfile/towns">Town(s)</MenuItem>
             <MenuItem name="2-16" to="/masterfile/barangays">Barangay(s)</MenuItem>
+            <MenuItem name="2-17" to="/masterfile/minimum_order">Minimum Order</MenuItem>
+            <MenuItem name="2-18" >Location Group Setup</MenuItem>
+
+
         </Submenu>
         <Submenu name="3">
             <template slot="title">
@@ -61,6 +68,15 @@
                 <!-- <MenuItem name="5-5">Multiple Images</MenuItem> -->
                 <MenuItem name="5-6" to="/goods/uploading/update_product_description">Product Description</MenuItem>
             </Submenu>
+        </Submenu>
+        <Submenu name="4">
+            <template slot="title">
+                <Icon type="md-folder" />
+                Foods Files
+            </template>
+            <MenuItem name="1-1">Tenant(s) Order</MenuItem>
+            <MenuItem name="1-2">Rider List </MenuItem>
+            <MenuItem name="1-3">Voucher Categories</MenuItem>
         </Submenu>
         <Submenu name="6">
             <template slot="title">

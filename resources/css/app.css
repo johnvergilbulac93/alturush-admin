@@ -12,12 +12,9 @@ body {
 }
 
 tr {
-    @apply border-b last:border-b-0;
+    @apply border-b;
 }
-tfoot,
-tr {
-    @apply border-t last:border-t-0;
-}
+
 .tbody {
     @apply text-gray-800;
 }

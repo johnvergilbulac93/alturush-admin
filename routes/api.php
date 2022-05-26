@@ -225,10 +225,18 @@ Route::middleware('auth:api')->group(function () {
         });
 
         Route::prefix('min_order')->group(function () {
-            Route::get('/show',                                'API\SetUpController@show_min_order');
-            Route::post('/save',                               'API\SetUpController@create_minimum');
-            Route::delete('/{id}',                             'API\SetUpController@delete_minimum');
-            Route::post('/update/',                            'API\SetUpController@edit_minimum');
+            Route::prefix('goods')->group(function () {
+                Route::get('/show',                            'Masterfile\MinOrderController@show_min_order_goods');
+                Route::post('/save',                           'Masterfile\MinOrderController@save_min_order_goods');
+                Route::post('/update',                         'Masterfile\MinOrderController@update_min_order_goods');
+                Route::post('/change_status',                  'Masterfile\MinOrderController@status_min_order_goods');
+            });
+            Route::prefix('foods')->group(function () {
+                Route::get('/show',                            'Masterfile\MinOrderController@show_min_order_foods');
+                Route::post('/save',                           'Masterfile\MinOrderController@save_min_order_foods');
+                Route::post('/update',                         'Masterfile\MinOrderController@update_min_order_foods');
+                Route::post('/change_status',                  'Masterfile\MinOrderController@status_min_order_foods');
+            });
         });
 
         Route::prefix('delivery_charge')->group(function () {
@@ -261,10 +269,6 @@ Route::middleware('auth:api')->group(function () {
         });
 
         Route::prefix('barangay')->group(function () {
-            // Route::get('/show',                                'API\SetUpController@show_barangay');
-            // Route::post('/create',                             'API\SetUpController@create_barangay');
-            // Route::post('/update',                             'API\SetUpController@update_barangay');
-            // Route::post('/status',                             'API\SetUpController@update_barangay_status');
 
             Route::get('/show',                                'Masterfile\BrgyController@show_brgy');
             Route::post('/save',                               'Masterfile\BrgyController@save_brgy');

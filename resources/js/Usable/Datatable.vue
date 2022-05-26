@@ -13,7 +13,8 @@
                                 ? 'sorting_up'
                                 : 'sorting_down'
                             : 'sorting_both',
-                        column.class
+                        column.class,
+                        'mx-2'
                     ]"
                     style="cursor:pointer;"
                 >

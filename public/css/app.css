@@ -855,6 +855,10 @@ select{
 .m-0{
   margin: 0px;
 }
+.mx-2{
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
 .my-2{
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -1782,15 +1786,6 @@ tr{
   border-bottom-width: 1px;
 }
 
-tr:last-child{
-  border-bottom-width: 0px;
-}
-tfoot, tr{
-  border-top-width: 1px;
-}
-tfoot:last-child, tr:last-child{
-  border-top-width: 0px;
-}
 .tbody{
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));

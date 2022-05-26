@@ -26,6 +26,8 @@ import Town             from "./modules/Town";
 import Brgy             from "./modules/Barangay";
 import Product          from "./modules/Product";
 import Report           from "./modules/Reports";
+import MinOrder         from "./modules/MinOrder";
+
 
 
 export default new Vuex.Store({
@@ -52,6 +54,7 @@ export default new Vuex.Store({
         Town,
         Brgy,
         Product,
-        Report
+        Report,
+        MinOrder
     }
 });

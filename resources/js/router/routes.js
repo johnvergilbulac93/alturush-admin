@@ -33,6 +33,7 @@ import tenant from "./../components/masterfile/Tenant";
 import province from "./../components/masterfile/Provinces";
 import towns from "./../components/masterfile/Towns";
 import barangay from "./../components/masterfile/Barangay";
+import minimum_order from "./../components/masterfile/Minimum-Order";
 
 import product_list from "./../components/goods/pages/Central-item";
 import disable_uom from "./../components/goods/pages/Item-disable-per-uom";
@@ -159,6 +160,11 @@ const routes = [
         path: "/masterfile/barangays",
         name: "barangay",
         component: barangay
+    },
+    {
+        path: "/masterfile/minimum_order",
+        name: "minimum_order",
+        component: minimum_order
     },
     {
         path: "/goods/product_lists",

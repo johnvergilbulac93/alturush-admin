@@ -11,7 +11,7 @@ class CommonController extends Controller
 {
     public function get_selected_tenant(Request $request)
     {
-        return  DB::table('locate_tenants')->where('locate_tenants.bunit_code', $request->id)->get();
+        return  DB::table('locate_tenants')->where('locate_tenants.bunit_code', $request->id)->where('locate_tenants.active', true)->get();
     }
     public function province()
     {

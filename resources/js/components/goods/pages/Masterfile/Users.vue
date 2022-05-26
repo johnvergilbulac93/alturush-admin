@@ -1,5 +1,5 @@
 <template>
-    <div class="border rounded p-2">
+    <div class="border rounded p-2 space-y-2">
         <div class="flex justify-end">
             <Tooltip content="Add User" placement="right">
                 <Button
@@ -10,7 +10,7 @@
                 />
             </Tooltip>
         </div>
-        <div class="flex justify-between items-center my-2">
+        <div class="flex justify-between items-center">
             <Input
                 v-model="tableData.search"
                 @on-keyup="search"
