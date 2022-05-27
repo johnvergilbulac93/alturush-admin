@@ -1785,6 +1785,12 @@ body{
 tr{
   border-bottom-width: 1px;
 }
+thead, tr, th{
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
 
 .tbody{
   --tw-text-opacity: 1;

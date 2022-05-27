@@ -23,6 +23,11 @@ use Illuminate\Support\Facades\Route;
 // this routes is protected by authentication
 Route::middleware('auth:api')->group(function () {
 
+    Route::prefix('order')->group(function () {
+        Route::prefix('foods')->group(function () {
+            Route::get('/tenant_orders',                        "API\OrdersController@tenant_orders");
+        });
+    });
     //Uploading Routes
     Route::prefix('uploading')->group(function () {
         Route::post('/item',                                    'API\UploadingController@uploaditem');

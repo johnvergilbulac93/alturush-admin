@@ -28,9 +28,7 @@ import Product          from "./modules/Product";
 import Report           from "./modules/Reports";
 import MinOrder         from "./modules/MinOrder";
 import LocGroup         from "./modules/Location-Group";
-
-
-
+import Order            from "./modules/Order";
 
 export default new Vuex.Store({
     state,
@@ -58,6 +56,7 @@ export default new Vuex.Store({
         Product,
         Report,
         MinOrder,
-        LocGroup
+        LocGroup,
+        Order
     }
 });

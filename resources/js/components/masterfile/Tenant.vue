@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions } from "vuex";
 import FoodTenant from "./../foods/pages/Masterfile/Tenant.vue";
 import GoodsTenant from "../goods/pages/Masterfile/Tenant.vue";
 export default {

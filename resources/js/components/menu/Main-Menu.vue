@@ -14,8 +14,6 @@
                 Masterfile
             </template>
 
-
-
             <MenuItem name="2-1" to="/masterfile/user">Users</MenuItem>
             <MenuItem name="2-2" to="/masterfile/user-type">Usertype(s)</MenuItem>
 
@@ -69,14 +67,14 @@
                 <MenuItem name="5-6" to="/goods/uploading/update_product_description">Product Description</MenuItem>
             </Submenu>
         </Submenu>
-        <Submenu name="4">
+        <Submenu name="9">
             <template slot="title">
                 <Icon type="md-folder" />
                 Foods Files
             </template>
-            <MenuItem name="1-1">Tenant(s) Order</MenuItem>
-            <MenuItem name="1-2">Rider List </MenuItem>
-            <MenuItem name="1-3">Voucher Categories</MenuItem>
+            <MenuItem name="9-1" to="/foods/tenants_order">Tenant(s) Order</MenuItem>
+            <MenuItem name="9-2">Rider List </MenuItem>
+            <MenuItem name="9-3">Voucher Categories</MenuItem>
         </Submenu>
         <Submenu name="6">
             <template slot="title">

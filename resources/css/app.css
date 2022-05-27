@@ -14,6 +14,11 @@ body {
 tr {
     @apply border-b;
 }
+thead,
+tr,
+th {
+    @apply px-2 py-4  !important;
+}
 
 .tbody {
     @apply text-gray-800;

@@ -9,13 +9,4 @@ export default {
     update(payload) {
         return BaseApi.post(`/masterfile/location_group/update`, payload);
     }
-    // update(payload) {
-    //     return BaseApi.post(`/masterfile/global_discount/update`, payload);
-    // },
-    // changeStatus(payload) {
-    //     return BaseApi.post(
-    //         "/masterfile/global_discount/change_status",
-    //         payload
-    //     );
-    // }
 };
