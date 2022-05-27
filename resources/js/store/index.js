@@ -27,6 +27,8 @@ import Brgy             from "./modules/Barangay";
 import Product          from "./modules/Product";
 import Report           from "./modules/Reports";
 import MinOrder         from "./modules/MinOrder";
+import LocGroup         from "./modules/Location-Group";
+
 
 
 
@@ -55,6 +57,7 @@ export default new Vuex.Store({
         Brgy,
         Product,
         Report,
-        MinOrder
+        MinOrder,
+        LocGroup
     }
 });

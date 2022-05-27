@@ -12,5 +12,6 @@ class FDeliveryCharge extends Model
     }
 
     protected $table = 'tbl_delivery_charges';
+
     protected $guarded = [];
 }

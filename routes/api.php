@@ -277,9 +277,14 @@ Route::middleware('auth:api')->group(function () {
         });
 
         Route::prefix('tenant_food')->group(function () {
-            Route::get('/show',                                 'API\SetUpController@show_tenant_food');
+            Route::get('/show',                                'API\SetUpController@show_tenant_food');
         });
-        //end of food masterfile routes
+
+        Route::prefix('location_group')->group(function () {
+            Route::get('/show',                                'Masterfile\LocationGroupController@location_group');
+            Route::get('/default_data',                        'Masterfile\LocationGroupController@get_default_data');
+            Route::post('/update',                             'Masterfile\LocationGroupController@update_data');
+        });
     });
 
 
