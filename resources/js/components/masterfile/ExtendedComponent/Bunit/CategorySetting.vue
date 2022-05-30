@@ -16,13 +16,18 @@
                 </tr>
                 <tr v-for="(cat, i) in GlobalCategory" :key="i">
                     <td class="td ">{{ cat.category }}</td>
-                    <td class="td text-center  w-5">
+                    <td class="td text-center">
                         <Badge
                             class-name="w-5"
                             :status="
                                 !checkCat(cat.id, cat.check_cat)
                                     ? 'success'
                                     : 'error'
+                            "
+                            :text="
+                                !checkCat(cat.id, cat.check_cat)
+                                    ? 'Active'
+                                    : 'Inactive'
                             "
                         />
                     </td>
