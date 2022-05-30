@@ -141,7 +141,12 @@ Route::middleware('auth:api')->group(function () {
         Route::get('/selected_tenant',                         'Masterfile\CommonController@get_selected_tenant');
         Route::get('/range_level',                             'Masterfile\CommonController@range_level');
 
-
+        Route::prefix('voucher')->group(function () {
+            Route::get('/show',                                'Masterfile\VoucherController@show');
+            Route::post('/create',                             'Masterfile\VoucherController@create');
+            Route::post('/update',                             'Masterfile\VoucherController@update');
+            Route::post('/change_status',                      'Masterfile\VoucherController@status');
+        });
 
         Route::prefix('payment_method')->group(function () {
             Route::get('/show',                                'Masterfile\PaymentMethodController@show_payment_method');

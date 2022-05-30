@@ -30,6 +30,8 @@ import MinOrder         from "./modules/MinOrder";
 import LocGroup         from "./modules/Location-Group";
 import Order            from "./modules/Order";
 import Rider            from "./modules/Rider";
+import Voucher          from "./modules/Voucher";
+
 
 
 export default new Vuex.Store({
@@ -60,6 +62,7 @@ export default new Vuex.Store({
         MinOrder,
         LocGroup,
         Order,
-        Rider
+        Rider,
+        Voucher
     }
 });

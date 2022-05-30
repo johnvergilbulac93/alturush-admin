@@ -28,6 +28,7 @@
             <MenuItem name="2-10" to="/masterfile/global-discount">Global Discount Setup</MenuItem>
             <MenuItem name="2-11" to="/masterfile/payment-method-setup">Payment Method</MenuItem>
             <MenuItem name="2-12" to="/masterfile/delivery-charges">Delivery Charges</MenuItem>
+            <MenuItem name="2-19" to="/masterfile/voucher">Voucher Categories</MenuItem>
 
             <MenuItem name="2-13" to="/masterfile/tenant">Tenant</MenuItem>
             <MenuItem name="2-14" to="/masterfile/province">Province(s)</MenuItem>
@@ -74,7 +75,7 @@
             </template>
             <MenuItem name="9-1" to="/foods/tenants_order">Tenant(s) Order</MenuItem>
             <MenuItem name="9-2" to="/foods/rider_lists">Rider List </MenuItem>
-            <MenuItem name="9-3">Voucher Categories</MenuItem>
+
         </Submenu>
         <Submenu name="6">
             <template slot="title">

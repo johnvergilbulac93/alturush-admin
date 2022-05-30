@@ -35,6 +35,7 @@ import towns from "./../components/masterfile/Towns";
 import barangay from "./../components/masterfile/Barangay";
 import minimum_order from "./../components/masterfile/Minimum-Order";
 import location_group_setup from "./../components/masterfile/Location-Group";
+import voucher from "./../components/masterfile/Voucher-Categories";
 
 import product_list from "./../components/goods/pages/Central-item";
 import disable_uom from "./../components/goods/pages/Item-disable-per-uom";
@@ -174,6 +175,11 @@ const routes = [
         path: "/masterfile/location_group_setup",
         name: "location_group_setup",
         component: location_group_setup
+    },
+    {
+        path: "/masterfile/voucher",
+        name: "voucher",
+        component: voucher
     },
     {
         path: "/goods/product_lists",
