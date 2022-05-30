@@ -3,6 +3,7 @@ import landing_page from "./../components/goods/pages/Landing-page";
 import item from "./../components/goods/pages/Item-masterfile";
 import disabled_item_batch from "./../components/goods/pages/Item-disabled-batch";
 import dashboard from "./../components/goods/pages/Dashboard";
+import monitoring from "./../components/dashboard/Monitoring"
 
 import reports_store from "./../components/goods/pages/Reports-store";
 
@@ -72,8 +73,8 @@ import Redirect from "./../Usable/Redirect";
 const routes = [
     {
         path: "/",
-        name: "main-page",
-        component: landing_page
+        name: "monitoring",
+        component: monitoring
     },
     {
         path: "/change_password",
@@ -307,11 +308,11 @@ const routes = [
         name: "rider_lists",
         component: rider_lists
     },
-    {
-        path: "/dashboard",
-        name: "dashboard",
-        component: dashboard
-    },
+    // {
+    //     path: "/dashboard",
+    //     name: "dashboard",
+    //     component: dashboard
+    // },
     {
         path: "/item",
         name: "item",

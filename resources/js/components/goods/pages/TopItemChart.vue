@@ -18,15 +18,14 @@ export default {
             }
         }
     },
-    methods: {  
+    methods: {
         loadChart() {
             this.renderChart(
                 {
                     labels: this.chartLabels,
                     datasets: [
                         {
-                            label: this.newLabel,
-                            data: this.chartData,
+                        label: this.newLabel,
                             backgroundColor: "#3B82F6",
                             borderColor: "#3B82F6",
                             fill: false,

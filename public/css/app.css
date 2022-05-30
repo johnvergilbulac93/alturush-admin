@@ -1383,6 +1383,10 @@ select{
   --tw-border-opacity: 1;
   border-color: rgb(45 140 240 / var(--tw-border-opacity));
 }
+.border-gray-100{
+  --tw-border-opacity: 1;
+  border-color: rgb(243 244 246 / var(--tw-border-opacity));
+}
 .border-opacity-30{
   --tw-border-opacity: 0.3;
 }

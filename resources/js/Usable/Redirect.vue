@@ -2,8 +2,7 @@
 export default {
     name: "Redirect",
     mounted() {
-
-        this.$router.push({ name: "main-page" });
+        this.$router.push({ name: "monitoring" });
     }
 };
 </script>

@@ -1,13 +1,9 @@
 <template>
     <Menu theme="light" style="width: 100%;" accordion>
-        <Submenu name="1">
-            <template slot="title">
-                <Icon type="ios-analytics" />
+        <MenuItem name="1" to="/">
+            <Icon type="ios-speedometer" />
                 Dashboard
-            </template>
-            <MenuItem name="1-1">Goods Dashboard</MenuItem>
-            <MenuItem name="1-2">Foods Dashboard</MenuItem>
-        </Submenu>
+        </MenuItem>
         <Submenu name="2">
             <template slot="title">
                 <Icon type="md-settings" />
