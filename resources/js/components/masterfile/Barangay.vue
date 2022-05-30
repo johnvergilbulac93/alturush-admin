@@ -1,7 +1,7 @@
 <template>
     <div class="space-y-2">
         <module-header icon="ios-pin-outline" title="Barangay(s)" />
-        <div class="border p-2">
+        <div class="border p-2 space-y-2">
             <div class="flex justify-end">
                 <Tooltip content="Add" placement="right">
                     <Button
@@ -12,7 +12,7 @@
                     />
                 </Tooltip>
             </div>
-            <div class="flex justify-between items-center my-2">
+            <div class="flex justify-between items-center">
                 <Input
                     v-model="tableData.search"
                     @on-keyup="search"

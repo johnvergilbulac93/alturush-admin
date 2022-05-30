@@ -7,6 +7,9 @@
 @tailwind components;
 @tailwind utilities;
 
+#rider_title{
+    @apply text-right;
+}
 body {
     @apply font-rubik;
 }

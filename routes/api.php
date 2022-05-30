@@ -28,7 +28,15 @@ Route::middleware('auth:api')->group(function () {
             Route::get('/tenant_orders',                        "API\OrdersController@tenant_orders");
         });
     });
-    //Uploading Routes
+
+    Route::prefix('rider')->group(function () {
+        Route::prefix('foods')->group(function () {
+            Route::get('/show',                                 "API\RiderController@riders");
+            Route::post('/rider_liabilities',                   "API\RiderController@rider_incomplete_liabilities");
+            Route::post('/clear',                               "API\RiderController@clear_data");
+        });
+    });
+
     Route::prefix('uploading')->group(function () {
         Route::post('/item',                                    'API\UploadingController@uploaditem');
         Route::post('/item_price',                              'API\UploadingController@uploadprice');
@@ -38,15 +46,12 @@ Route::middleware('auth:api')->group(function () {
         Route::post('/item_image',                              'API\UploadingController@multipleImage');
         Route::post('/item_description',                        'API\UploadingController@item_description');
     });
-    //End Uploading Routes
 
-    //Chart Routes
     Route::prefix('chart')->group(function () {
         Route::get('/not_available_item',                       'API\ChartController@not_available_item');
         Route::get('/top_items',                                'API\ChartController@top_items');
         Route::get('/top_item_store',                           'API\ChartController@top_item_store');
     });
-    //End Chart Routes
 
     Route::prefix('export')->group(function () {
         Route::get('/product',                                  'Export\ExportController@export_product');

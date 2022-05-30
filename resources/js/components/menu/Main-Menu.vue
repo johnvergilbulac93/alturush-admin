@@ -73,7 +73,7 @@
                 Foods Files
             </template>
             <MenuItem name="9-1" to="/foods/tenants_order">Tenant(s) Order</MenuItem>
-            <MenuItem name="9-2">Rider List </MenuItem>
+            <MenuItem name="9-2" to="/foods/rider_lists">Rider List </MenuItem>
             <MenuItem name="9-3">Voucher Categories</MenuItem>
         </Submenu>
         <Submenu name="6">

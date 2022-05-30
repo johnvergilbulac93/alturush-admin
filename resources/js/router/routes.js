@@ -64,6 +64,7 @@ import hourly_call_monitoring from "./../components/foods/pages/report/HourlyCal
 import alturush_commission from "./../components/foods/pages/report/AlturushCommission";
 
 import tenants_order from "./../components/foods/pages/OrderManagement/Tenant-Order";
+import rider_lists from "./../components/foods/pages/Rider/RiderList";
 
 import Redirect from "./../Usable/Redirect";
 
@@ -294,6 +295,11 @@ const routes = [
         path: "/foods/tenants_order",
         name: "tenants_order",
         component: tenants_order
+    },
+    {
+        path: "/foods/rider_lists",
+        name: "rider_lists",
+        component: rider_lists
     },
     {
         path: "/dashboard",
