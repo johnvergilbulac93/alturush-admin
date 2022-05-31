@@ -41,8 +41,8 @@ export default {
                         text: "ITEM NOT AVAILABLE"
                     }
                 }
-                );
-            }
+            );
+        }
     },
     watch: {
         data() {

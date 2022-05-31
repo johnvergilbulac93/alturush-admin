@@ -31,8 +31,7 @@ import LocGroup         from "./modules/Location-Group";
 import Order            from "./modules/Order";
 import Rider            from "./modules/Rider";
 import Voucher          from "./modules/Voucher";
-
-
+import Chart            from "./modules/Chart";
 
 export default new Vuex.Store({
     state,
@@ -63,6 +62,7 @@ export default new Vuex.Store({
         LocGroup,
         Order,
         Rider,
-        Voucher
+        Voucher,
+        Chart
     }
 });

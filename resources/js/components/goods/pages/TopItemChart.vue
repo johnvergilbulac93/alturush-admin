@@ -10,11 +10,15 @@ export default {
         chartLabels() {
             return this.labels;
         },
-        newLabel(){
-            if(this.flag){
-                return  moment(this.year).format("YYYY");
-            }else{
-                return  moment(this.year).format("YYYY") + ' - ' + moment(this.month).format("MMMM");
+        newLabel() {
+            if (this.flag) {
+                return moment(this.year).format("YYYY");
+            } else {
+                return (
+                    moment(this.year).format("YYYY") +
+                    " - " +
+                    moment(this.month).format("MMMM")
+                );
             }
         }
     },
@@ -25,7 +29,7 @@ export default {
                     labels: this.chartLabels,
                     datasets: [
                         {
-                        label: this.newLabel,
+                            label: this.newLabel,
                             backgroundColor: "#3B82F6",
                             borderColor: "#3B82F6",
                             fill: false,
@@ -64,9 +68,9 @@ export default {
                                 scaleLabel: {
                                     display: true,
                                     labelString: "Quantity"
-                                },
+                                }
                             }
-                        ],
+                        ]
                     }
                 }
             );
