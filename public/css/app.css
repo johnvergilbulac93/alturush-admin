@@ -822,8 +822,8 @@ select{
 .right-0{
   right: 0px;
 }
-.top-14{
-  top: 3.5rem;
+.top-\[52px\]{
+  top: 52px;
 }
 .bottom-0{
   bottom: 0px;
@@ -875,6 +875,9 @@ select{
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
 }
+.mb-5{
+  margin-bottom: 1.25rem;
+}
 .mt-5{
   margin-top: 1.25rem;
 }
@@ -922,9 +925,6 @@ select{
 }
 .mb-2{
   margin-bottom: 0.5rem;
-}
-.mb-5{
-  margin-bottom: 1.25rem;
 }
 .mt-3{
   margin-top: 0.75rem;
@@ -1222,6 +1222,16 @@ select{
 .gap-0{
   gap: 0px;
 }
+.space-x-1 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.space-y-4 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
 .space-y-3 > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
   margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1237,11 +1247,6 @@ select{
   margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
-.space-x-1 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
-}
 .space-y-2 > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1256,11 +1261,6 @@ select{
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
-}
-.space-y-4 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 .space-y-0\.5 > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
@@ -1362,6 +1362,10 @@ select{
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
+.bg-gray-100{
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
 .bg-red-400{
   --tw-bg-opacity: 1;
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
@@ -1399,10 +1403,6 @@ select{
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
-.bg-gray-100{
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
 .bg-green-500{
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
@@ -1422,10 +1422,6 @@ select{
 .bg-blue-400{
   --tw-bg-opacity: 1;
   background-color: rgb(96 165 250 / var(--tw-bg-opacity));
-}
-.bg-red-200{
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
 }
 .bg-opacity-80{
   --tw-bg-opacity: 0.8;
@@ -1453,11 +1449,11 @@ select{
 .p-2{
   padding: 0.5rem;
 }
-.p-3{
-  padding: 0.75rem;
-}
 .p-5{
   padding: 1.25rem;
+}
+.p-3{
+  padding: 0.75rem;
 }
 .p-16{
   padding: 4rem;
@@ -1566,13 +1562,13 @@ select{
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
-.text-sm{
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
 .text-lg{
   font-size: 1.125rem;
   line-height: 1.75rem;
+}
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 .text-xs{
   font-size: 0.75rem;
@@ -1625,18 +1621,22 @@ select{
 .leading-snug{
   line-height: 1.375;
 }
-.tracking-wide{
-  letter-spacing: 0.025em;
-}
 .tracking-wider{
   letter-spacing: 0.05em;
 }
 .tracking-normal{
   letter-spacing: 0em;
 }
+.tracking-wide{
+  letter-spacing: 0.025em;
+}
 .text-black{
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+.text-gray-800{
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 .text-gray-600{
   --tw-text-opacity: 1;
@@ -1665,10 +1665,6 @@ select{
 .text-purple-500{
   --tw-text-opacity: 1;
   color: rgb(168 85 247 / var(--tw-text-opacity));
-}
-.text-gray-800{
-  --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 .text-yellow-500{
   --tw-text-opacity: 1;
@@ -1785,6 +1781,9 @@ select{
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
 
+ivu-dropdown-menu{
+  padding: 0.5rem !important;
+}
 #rider_title{
   text-align: right;
 }
@@ -2442,12 +2441,12 @@ hr{
     height: 1.25rem;
   }
 
-  .sm\:w-5{
-    width: 1.25rem;
-  }
-
   .sm\:w-full{
     width: 100%;
+  }
+
+  .sm\:w-5{
+    width: 1.25rem;
   }
 
   .sm\:w-3\/4{

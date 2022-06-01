@@ -3,7 +3,7 @@ import landing_page from "./../components/goods/pages/Landing-page";
 import item from "./../components/goods/pages/Item-masterfile";
 import disabled_item_batch from "./../components/goods/pages/Item-disabled-batch";
 import dashboard from "./../components/goods/pages/Dashboard";
-import monitoring from "./../components/dashboard/Monitoring"
+import monitoring from "./../components/dashboard/Monitoring";
 
 import reports_store from "./../components/goods/pages/Reports-store";
 
@@ -17,6 +17,7 @@ import accountability_store from "./../components/goods/pages/Accountability-Rep
 
 import change_password from "./../components/goods/pages/Change-Password";
 import change_username from "./../components/goods/pages/Change-Username";
+import contact_us from "./../Usable/Contact-Us";
 
 import user from "./../components/masterfile/User";
 import user_type from "./../components/masterfile/Usertype";
@@ -354,7 +355,11 @@ const routes = [
         name: "accountability_store",
         component: accountability_store
     },
-
+    {
+        path: "/contact_us",
+        name: "contact_us",
+        component: contact_us
+    },
     { path: "*", component: Redirect }
 ];
 export default routes;

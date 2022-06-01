@@ -1,6 +1,5 @@
 <template>
-    <div class="flex items-center gap-4 font-inter">
-        <!-- <h1 v-text="message"></h1> -->
+    <div class="flex items-center gap-4 ">
         <h2 v-text="currentTime" class="text-xl font-semibold "></h2>
     </div>
 </template>
@@ -16,7 +15,7 @@ export default {
     methods: {
         updateCurrentTime() {
             this.currentTime = moment().format("LLLL");
-        },
+        }
     },
     created() {
         this.currentTime = moment().format("LLLL");

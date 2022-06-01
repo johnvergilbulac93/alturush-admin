@@ -1,7 +1,7 @@
 <template>
-    <div class=" bg-gray-50 shadow-lg p-5 rounded text-gray-800 ">
+    <div class="  p-5 rounded text-gray-800 ">
         <div class="flex flex-col justify-center items-center ">
-            <div class="mb-5 bg-gray-100 p-2 md:w-1/2 sm:w-full  border">
+            <div class="mb-5  p-2 md:w-1/2 sm:w-full  border">
                 <label class=" flex items-center space-x-1">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -21,74 +21,33 @@
                 </label>
                 <div class=" mt-5 p-2 space-y-4 ">
                     <div>
-                        <label for="" class="block font-semibold"
-                            >Old Username
-                        </label>
-                        <input
-                            v-bind:class="{
-                                'border-red-600': errors.old_username
-                            }"
-                            type="text"
+                        <label class="block font-semibold">Old Username </label>
+                        <Input
                             v-model="form.old_username"
-                            class="form"
-                            tabindex="1"
-                            autofocus
-                            placeholder="Old Username"
+                            placeholder="Enter old username"
                         />
-                        <transition
-                            enter-active-class="ease-in duration-300"
-                            enter-class="opacity-0 "
-                            enter-to-class="opacity-100"
-                            leave-active-class="ease-out duration-500"
-                            leave-class="opacity-100"
-                            leave-to-class="opacity-0"
-                        >
-                            <Error
-                                :message="errors.old_username[0]"
-                                v-if="errors.old_username"
-                            />
-                        </transition>
+                        <Error
+                            :message="errors.old_username[0]"
+                            v-if="errors.old_username"
+                        />
                     </div>
                     <div>
                         <label for="" class="block font-semibold"
                             >New Username
                         </label>
-                        <input
-                            v-bind:class="{
-                                'border-red-600': errors.new_username
-                            }"
-                            type="text"
+
+                        <Input
                             v-model="form.new_username"
-                            class="form"
-                            tabindex="2"
-                            placeholder="New Username"
+                            placeholder="Enter new username"
                         />
-                        <transition
-                            enter-active-class="ease-in duration-300"
-                            enter-class="opacity-0 "
-                            enter-to-class="opacity-100"
-                            leave-active-class="ease-out duration-500"
-                            leave-class="opacity-100"
-                            leave-to-class="opacity-0"
-                        >
-                            <Error
-                                :message="errors.new_username[0]"
-                                v-if="errors.new_username"
-                            />
-                        </transition>
+                        <Error
+                            :message="errors.new_username[0]"
+                            v-if="errors.new_username"
+                        />
                     </div>
-                    <button
-                        @click="saveChanges"
-                        class="px-4 py-2 bg-blue-500 text-white  hover:bg-blue-600 rounded transition duration-500 focus:outline-none"
-                    >
-                        Save
-                    </button>
-                    <button
-                        @click="clear"
-                        class="px-4 py-2 bg-gray-500 text-white  hover:bg-gray-600 rounded transition duration-500 focus:outline-none"
-                    >
-                        Clear
-                    </button>
+                    <Button type="primary" @click="saveChanges">Submit</Button>
+                    <Button @click="clear">Clear</Button>
+
                 </div>
             </div>
         </div>

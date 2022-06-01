@@ -115,7 +115,7 @@ Vue.component(
 Vue.component("Pagination", require("./Usable/Pagination.vue").default);
 Vue.component("Datatable", require("./Usable/Datatable.vue").default);
 Vue.component("Error", require("./Usable/Error.vue").default);
-Vue.component("Clock", require("./Usable/Clock.vue").default);
+Vue.component("module-clock", require("./Usable/Clock.vue").default);
 
 Vue.component("menu-item", require("./Usable/TheMenuItem.vue").default);
 Vue.component("SubItem", require("./Usable/TheSubMenuItem.vue").default);
@@ -166,6 +166,8 @@ Vue.component(
     require("./Usable/Transition-Modal.vue").default
 );
 Vue.component("module-header", require("./Usable/Header.vue").default);
+Vue.component("module-dropdown", require("./Usable/Dropdown.vue").default);
+
 //End Global Declaration Component
 
 /**

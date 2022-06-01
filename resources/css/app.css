@@ -7,7 +7,10 @@
 @tailwind components;
 @tailwind utilities;
 
-#rider_title{
+ivu-dropdown-menu {
+    @apply p-2 !important;
+}
+#rider_title {
     @apply text-right;
 }
 body {
