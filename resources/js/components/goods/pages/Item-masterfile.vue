@@ -1,162 +1,88 @@
 <template>
-    <div class=" space-y-2 border">
-        <div class=" text-gray-800 overflow-x-auto">
-            <div class="mb-2 bg-gray-100 p-2">
-                <label for="" class=" text-lg font-semibold"
-                    >Item Masterfile</label
-                >
-            </div>
-            <div class="p-2">
-                <div class="flex items-center">
-                    <div class="flex gap-2 items-center w-full">
-                        <div class="w-auto flex items-center gap-0.5 ">
-                            <div class="relative w-64  flex items-center ">
-                                <input
-                                    type="text"
-                                    class="form-search "
-                                    placeholder="Search...."
-                                    v-model="tableData.search"
-                                    @keyup.enter="search"
-                                />
-                                <button
-                                    @click="clear"
-                                    v-if="tableData.search.length"
-                                    class="absolute right-0 z-10 py-1 pr-2 w-8 h-full leading-snug bg-transparent rounded  flex items-center justify-center focus:outline-none "
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-5 w-5  hover:text-red-500"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M6 18L18 6M6 6l12 12"
-                                        />
-                                    </svg>
-                                </button>
-                            </div>
-                            <button @click="search" class="button-search">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5 "
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                    />
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="w-72">
-                            <select
-                                class="form"
-                                v-model="tableData.category"
-                                @change="fetch()"
-                            >
-                                <option value="">Choose Category</option>
-                                <option
-                                    v-for="(category, index) in ItemCategory"
-                                    :key="index"
-                                    :value="category.category_name"
-                                >
-                                    {{ category.category_name }}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="w-48">
-                            <select
-                                class="form "
-                                v-model="tableData.type"
-                                @change="fetch()"
-                            >
-                                <option value="">Item Availability</option>
-                                <option value="1">Available Item</option>
-                                <option value="2">Unavailable Item</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div
-                        class="flex gap-1 justify-end text-sm items-center w-40 "
+    <div class=" space-y-2 ">
+        <module-header icon="md-basket" title="Product List" />
+        <div class="border p-2 space-y-2">
+            <div class="flex justify-between items-center gap-2">
+                <div class="w-3/4  flex gap-2 items-center">
+                    <Input
+                        v-model="tableData.search"
+                        @on-keyup="search"
+                        placeholder="Search"
+                        style="width: 30%"
+                        suffix="ios-search"
+                        clearable
+                        @on-clear="search"
+                    />
+                    <Select
+                        placeholder="Select a category"
+                        v-model="tableData.category"
+                        @on-change="fetch()"
+                        style="width: 35%"
+                        clearable
+                        filterable
                     >
-                        <span>Show</span>
-                        <select
-                            class="form-sort  "
-                            v-model="tableData.length"
-                            @change="fetch()"
+                        <Option
+                            v-for="(category, index) in ItemCategory"
+                            :key="index"
+                            :value="category.category_name"
                         >
-                            <option
-                                v-for="(records, index) in perPage"
-                                :key="index"
-                                :value="records"
-                            >
-                                {{ records }}
-                            </option>
-                        </select>
-                        <span>Entries</span>
-                    </div>
+                            {{ category.category_name }}
+                        </Option>
+                    </Select>
+
+                    <Select
+                        v-model="tableData.type"
+                        @on-change="fetch()"
+                        clearable
+                        placeholder="Select product availability"
+                        style="width: 35%"
+                    >
+                        <Option value="1">Active </Option>
+                        <Option value="2">Inactive </Option>
+                    </Select>
                 </div>
 
-                <div class="flex space-x-2 mt-1">
-                    <div class="mb-1">
-                        <button
-                            class="flex items-center bg-red-500 px-2 py-1 focus:outline-none text-white  hover:bg-red-600 transition duration-500 rounded"
-                            v-if="form.itemIds.length != 0"
-                            @click="disableAll"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5 mr-1"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            </svg>
-                            Disable
-                        </button>
-                    </div>
-                    <div class="mb-1">
-                        <button
-                            class="flex items-center bg-green-500 px-2 py-1 focus:outline-none text-white  hover:bg-green-600 transition duration-500 rounded"
-                            v-if="form.itemIds.length != 0"
-                            @click="enableAll"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5 mr-1"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M5 13l4 4L19 7"
-                                />
-                            </svg>
-                            Enable
-                        </button>
-                    </div>
+                <div class="w-1/4  justify-end items-center flex gap-1">
+                    <span class="sm:hidden md:block">Show</span>
+                    <Select
+                        v-model="tableData.length"
+                        @on-change="fetch()"
+                        style="width: 80px"
+                        placeholder="Select"
+                    >
+                        <Option
+                            v-for="(records, index) in perPage"
+                            :key="index"
+                            :value="records"
+                            >{{ records }}
+                        </Option>
+                    </Select>
+                    <span class="sm:hidden md:block">Entries</span>
                 </div>
-                <table class="min-w-full divide-y divide-gray-300">
-                    <thead class=" bg-gray-100 tracking-normal">
+            </div>
+            <div class="flex items-center" v-if="form.itemIds.length != 0">
+                <Tooltip content="Disable Product" placement="bottom">
+                    <Button
+                        @click="disableAll"
+                        type="error"
+                        icon="ios-close"
+                        v-if="tableData.type == 1"
+                    />
+                </Tooltip>
+                <Tooltip content="Enable Product" placement="bottom">
+                    <Button
+                        @click="enableAll"
+                        type="success"
+                        icon="ios-checkmark"
+                        v-if="tableData.type == 2"
+                    />
+                </Tooltip>
+            </div>
+            <div class="border rounded">
+                <table class="min-w-full ">
+                    <thead class="tracking-normal">
                         <tr>
-                            <th class="th border">
+                            <th>
                                 <input
                                     type="checkbox"
                                     class="form-checkbox "
@@ -168,7 +94,7 @@
                                 v-for="column in columns"
                                 :key="column.name"
                                 @click="sortBy(column.name)"
-                                class="p-3 border"
+                                class="p-3 "
                                 :class="[
                                     sortKey === column.name
                                         ? sortOrders[column.name] > 0
@@ -184,12 +110,16 @@
                         </tr>
                     </thead>
                     <tbody class="tbody text-center">
-                        <tr class="tr" v-if="!Items.length">
-                            <td colspan="5" class="td ">
+                        <tr class="tr" v-if="!StoreProducts.length">
+                            <td colspan="5" class="td font-semibold ">
                                 NO DATA AVAILABLE
                             </td>
                         </tr>
-                        <tr v-for="(item, i) in Items" :key="i" class="tr">
+                        <tr
+                            v-for="(item, i) in StoreProducts"
+                            :key="i"
+                            class="tr"
+                        >
                             <td class="td">
                                 <input
                                     type="checkbox"
@@ -207,52 +137,16 @@
                                 {{ item.category_name }}
                             </td>
                             <td class="td ">
-                                <button
-                                    v-if="item.items !== null"
-                                    @click="ItemEnable(item.itemcode)"
-                                    data-toggle="tooltip"
-                                    data-placement="bottom"
-                                    title="Disable Item"
-                                    class="focus:outline-none"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-6 w-6 text-red-500"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M6 18L18 6M6 6l12 12"
-                                        />
-                                    </svg>
-                                </button>
-                                <button
-                                    v-else
-                                    @click="ItemDisable(item.itemcode)"
-                                    data-toggle="tooltip"
-                                    data-placement="bottom"
-                                    title="Enable Item"
-                                    class="focus:outline-none"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="h-6 w-6 text-green-500"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M5 13l4 4L19 7"
-                                        />
-                                    </svg>
-                                </button>
+                                <Badge
+                                    :color="
+                                        item.items == null ? 'green' : 'red'
+                                    "
+                                    :text="
+                                        item.items == null
+                                            ? 'Active'
+                                            : 'Inactive'
+                                    "
+                                />
                             </td>
                         </tr>
                     </tbody>
@@ -267,35 +161,30 @@
     </div>
 </template>
 <script>
+import _ from "lodash";
 import { mapActions, mapState } from "vuex";
-import Item from "../../../services/Item";
 export default {
     data() {
         let sortOrders = {};
-
         let columns = [
             {
-                width: "25%",
                 label: "Code",
                 name: "code",
                 class: "text-left"
             },
             {
-                width: "25%",
                 label: "Description",
                 name: "description",
                 class: "text-left"
             },
             {
-                width: "15%",
                 label: "Category Name",
                 name: "catname",
                 class: "text-left"
             },
             {
-                width: "15%",
-                label: "Action",
-                name: "action",
+                label: "Status",
+                name: "stat",
                 class: "text-center"
             }
         ];
@@ -314,7 +203,7 @@ export default {
                 column: 1,
                 dir: "desc",
                 category: "",
-                type: ""
+                type: "1"
             },
             form: {
                 product_id: "",
@@ -336,12 +225,17 @@ export default {
             "isModal",
             "errors",
             "pagination",
-            "ItemCategory",
-            "Items"
-        ])
+            "ItemCategory"
+        ]),
+        ...mapState("Product", ["StoreProducts"])
     },
     methods: {
-        ...mapActions(["modal", "getItemCategory", "getStoreItem"]),
+        ...mapActions(["getItemCategory"]),
+        ...mapActions("Product", [
+            "getStoreProducts",
+            "disabledAllStoreProduct",
+            "enabledAllStoreProduct"
+        ]),
         select() {
             this.allSelected = false;
         },
@@ -349,9 +243,9 @@ export default {
             this.form.itemIds = [];
             let item;
             if (!this.allSelected) {
-                for (item in this.Items) {
+                for (item in this.StoreProducts) {
                     this.form.itemIds.push(
-                        this.Items[item].itemcode.toString()
+                        this.StoreProducts[item].itemcode.toString()
                     );
                 }
             }
@@ -365,6 +259,7 @@ export default {
             this.fetch();
         },
         fetch() {
+            this.form.itemIds = [];
             let filterData = {
                 length: this.tableData.length,
                 search: this.tableData.search,
@@ -373,115 +268,43 @@ export default {
                 category: this.tableData.category,
                 type: this.tableData.type
             };
-            this.getStoreItem({
+            this.getStoreProducts({
                 currentPage: this.currentPage,
                 filterData: filterData
             });
         },
-        clear() {
-            this.tableData.search = "";
+        search: _.debounce(function() {
             this.fetch();
-        },
-        search() {
-            this.fetch();
-        },
+        }, 500),
         disableAll() {
-            let itemcode = {
-                ids: this.form.itemIds
-            };
-            swal.fire({
+            this.$Modal.confirm({
                 title: "Confirmation",
-                text: "Do you want to disable the selected item?",
-                icon: "question",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, disable it."
-            }).then(result => {
-                if (result.isConfirmed) {
-                    Item.store_item_disable_all(itemcode).then(() => {
-                        this.fetch();
-                        this.form.itemIds = [];
-                        this.allSelected = false;
-                        toast.fire({
-                            icon: "success",
-                            title: "Success",
-                            text: "Successfully changed"
-                        });
+                content: "<p>Do you want to disabled the selected item?</p>",
+                okText: "OK",
+                cancelText: "Cancel",
+                onOk: () => {
+                    this.disabledAllStoreProduct({
+                        ids: this.form.itemIds
                     });
+                },
+                onCancel: () => {
+                    this.$Message.info("You cancel");
                 }
             });
         },
         enableAll() {
-            let itemcode = {
-                ids: this.form.itemIds
-            };
-            swal.fire({
+            this.$Modal.confirm({
                 title: "Confirmation",
-                text: "Do you want to enable the selected item?",
-                icon: "question",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, enable it."
-            }).then(result => {
-                if (result.isConfirmed) {
-                    Item.store_item_enable_all(itemcode).then(() => {
-                        this.fetch();
-                        this.form.itemIds = [];
-                        this.allSelected = false;
-                        toast.fire({
-                            icon: "success",
-                            title: "Success",
-                            text: "Successfully changed"
-                        });
+                content: "<p>Do you want to enabled the selected item?</p>",
+                okText: "OK",
+                cancelText: "Cancel",
+                onOk: () => {
+                    this.enabledAllStoreProduct({
+                        ids: this.form.itemIds
                     });
-                }
-            });
-        },
-        ItemEnable(itemcode) {
-            swal.fire({
-                title: "Are you sure?",
-                text: "you want to enable this Item",
-                icon: "question",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, Enable it!"
-            }).then(result => {
-                if (result.isConfirmed) {
-                    Item.tag_store_item_enable(itemcode).then(() => {
-                        this.fetch();
-                        toast.fire({
-                            icon: "success",
-                            title: "Success",
-                            text: "Successfully changed"
-                        });
-                    });
-                }
-            });
-        },
-        ItemDisable(itemcode) {
-            swal.fire({
-                title: "Are you sure?",
-                text: "you want to disable this Item",
-                icon: "question",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, Disable it!"
-            }).then(result => {
-                if (result.isConfirmed) {
-                    Item.tag_store_item_disable({ itemcode: itemcode }).then(
-                        () => {
-                            this.fetch();
-                            toast.fire({
-                                icon: "success",
-                                title: "Success",
-                                text: "Successfully changed"
-                            });
-                        }
-                    );
+                },
+                onCancel: () => {
+                    this.$Message.info("You cancel");
                 }
             });
         },
@@ -497,6 +320,9 @@ export default {
         }
     },
     mounted() {
+        Fire.$on("reload_store_product", () => {
+            this.fetch();
+        });
         this.fetch();
         this.getItemCategory();
     }

@@ -1,14 +1,9 @@
-//goods components
-import landing_page from "./../components/goods/pages/Landing-page";
-import item from "./../components/goods/pages/Item-masterfile";
+import store_product_list from "./../components/goods/pages/Item-masterfile";
 import disabled_item_batch from "./../components/goods/pages/Item-disabled-batch";
-import dashboard from "./../components/goods/pages/Dashboard";
 import monitoring from "./../components/dashboard/Monitoring";
 
 import reports_store from "./../components/goods/pages/Reports-store";
-
 import exporting from "./../components/goods/pages/ExportFiles";
-
 import count from "./../components/goods/pages/Available-item-store";
 
 import minimum_delivery from "./../components/goods/pages/Minimum-order-delivery";
@@ -179,6 +174,11 @@ const routes = [
         component: location_group_setup
     },
     {
+        path: "/masterfile/store_product_list",
+        name: "store_product_list",
+        component: store_product_list
+    },
+    {
         path: "/masterfile/voucher",
         name: "voucher",
         component: voucher
@@ -309,16 +309,7 @@ const routes = [
         name: "rider_lists",
         component: rider_lists
     },
-    // {
-    //     path: "/dashboard",
-    //     name: "dashboard",
-    //     component: dashboard
-    // },
-    {
-        path: "/item",
-        name: "item",
-        component: item
-    },
+
     {
         path: "/disabled_item_batch",
         name: "disabled_item",

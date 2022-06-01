@@ -82,16 +82,16 @@ class ItemController extends Controller
         }
         if ($type) {
             if ($type == 1) {
-                $projects = $query2->paginate($length);
+                $results = $query2->paginate($length);
             }
             if ($type == 2) {
-                $projects = $query3->paginate($length);
+                $results = $query3->paginate($length);
             }
         } else {
-            $projects = $query->paginate($length);
+            $results = $query->paginate($length);
         }
 
-        return $projects;
+        return $results;
     }
 
     public function get_item_all_store(Request $request)
@@ -360,22 +360,19 @@ class ItemController extends Controller
     public function disabled_selected_item(Request $request)
     {
         $itemcode = $request->ids;
-        $count = 0;
         foreach ($itemcode as $key => $code) {
-            $checking =  gc_item_log_available::where('itemcode', $code)->where('store', Auth::user()->bunit_code)->exists();
-
-            if ($checking) {
-                $count++;
+            $data = array(
+                'itemcode'       => $code,
+                'store'          => Auth::user()->bunit_code,
+                'tag_by'         => Auth::user()->name,
+            );
+            $save =   gc_item_log_available::insert($data);
+            if ($save) {
+                return ['msg' => 'Status successfully updated.', 'status' => 'success', 'title' => 'Success'];
             } else {
-                $data = array(
-                    'itemcode'       => $code,
-                    'store'          => Auth::user()->bunit_code,
-                    'tag_by'         => Auth::user()->name,
-                );
-                gc_item_log_available::insert($data);
+                return ['msg' => 'Oops. something went wrong.', 'status' => 'error', 'title' => 'Oops'];
             }
         }
-        // return $count;
     }
 
     public function enabled_selected_item(Request $request)
@@ -383,7 +380,12 @@ class ItemController extends Controller
         $itemcode = $request->ids;
 
         foreach ($itemcode as $key => $code) {
-            gc_item_log_available::where('itemcode', $code)->where('store', Auth::user()->bunit_code)->delete();
+            $save = gc_item_log_available::where('itemcode', $code)->where('store', Auth::user()->bunit_code)->delete();
+            if ($save) {
+                return ['msg' => 'Status successfully updated.', 'status' => 'success', 'title' => 'Success'];
+            } else {
+                return ['msg' => 'Oops. something went wrong.', 'status' => 'error', 'title' => 'Oops'];
+            }
         }
     }
     public function count_price_changes()

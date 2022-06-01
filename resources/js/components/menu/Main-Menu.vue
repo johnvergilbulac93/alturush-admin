@@ -42,7 +42,7 @@
             </template>
             <Submenu name="4">
                 <template slot="title">
-                    <Icon type="ios-archive" />
+                    <Icon type="md-basket" />
                     Product
                 </template>
                 <MenuItem name="3-1" to="/goods/product_lists">Product Lists</MenuItem>

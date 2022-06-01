@@ -1,8 +1,20 @@
 <template>
-    <div class="mt-5 w-full border-l ">
-        <MenuItem text="Dashboard" icon="fas fa-tachometer-alt" :route="{ name: 'dashboard' }" /> 
-        <MenuItem text="Item Masterfile" icon="fas fa-shopping-bag" :route="{ name: 'item' }" />
-        <MenuItem text="Upload item code to disable" icon="fas fa-file-upload" :route="{ name: 'disabled_item' }" /> 
-        <MenuItem text="Item report" icon="fas fa-chart-line" :route="{ name: 'reports_store' }" /> 
-    </div>
+    <Menu theme="light" style="width: 100%;" accordion>
+        <MenuItem name="1" to="/">
+            <Icon type="md-speedometer" />
+            Dashboard
+        </MenuItem>
+        <MenuItem name="2" to="/masterfile/store_product_list">
+            <Icon type="md-basket" />
+            Product Lists
+        </MenuItem>
+        <MenuItem name="3" to="/">
+            <Icon type="md-download" />
+            Export Product
+        </MenuItem>
+        <MenuItem name="4" to="/">
+            <Icon type="md-basket" />
+            Product Lists
+        </MenuItem>
+    </Menu>
 </template>

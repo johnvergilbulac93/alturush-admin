@@ -63,15 +63,6 @@ export default {
     store_item_enable_all(itemcode) {
         return BaseApi.post("/product/per_store/item_enabled", itemcode);
     },
-
-    tag_store_item_disable(itemcode) {
-        return BaseApi.post("/product/per_store/item_tag_disabled", itemcode);
-    },
-    tag_store_item_enable(itemcode) {
-        return BaseApi.delete(
-            "/product/per_store/item_tag_enabled/" + itemcode
-        );
-    },
     export_product(payload) {
         return BaseApi.get("/export/product", {
             params: payload

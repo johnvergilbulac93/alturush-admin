@@ -7,7 +7,8 @@ export default {
     state: {
         Products: [],
         DisableProducts: [],
-        EnableProducts: []
+        EnableProducts: [],
+        StoreProducts: []
     },
     mutations: {
         SET_PRODUCT(state, payload) {
@@ -18,6 +19,9 @@ export default {
         },
         SET_ENABLED_PRODUCT(state, payload) {
             state.EnableProducts = payload;
+        },
+        SET_STORE_PRODUCT(state, payload) {
+            state.StoreProducts = payload;
         }
     },
     actions: {
@@ -226,6 +230,91 @@ export default {
                 const { status, data } = await Http.enable_product_uom(payload);
                 if (status == 200) {
                     Fire.$emit("reload_enable_product");
+                    Vue.$toast.open({
+                        message: `${data.msg}`,
+                        type: `${data.status}`
+                    });
+                }
+            } catch (error) {
+                const { status } = error.response;
+                switch (status) {
+                    case 500:
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            }
+        },
+        async getStoreProducts({ commit }, { currentPage, filterData }) {
+            try {
+                const { status, data } = await Http.store_item_masterfile(
+                    currentPage,
+                    filterData
+                );
+                if (status === 200) {
+                    commit("SET_STORE_PRODUCT", data.data);
+                    commit("PAGINATION", data, { root: true });
+                }
+            } catch (error) {
+                const { status, data } = error.response;
+                switch (status) {
+                    case 422:
+                        let obj = data.errors;
+                        for (let msg in obj) {
+                            Message.error({
+                                background: true,
+                                content: `${obj[msg]}`
+                            });
+                        }
+                        break;
+                    case 500:
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            }
+        },
+        async disabledAllStoreProduct({ commit }, payload) {
+            try {
+                const { status, data } = await Http.store_item_disable_all(
+                    payload
+                );
+                if (status == 200) {
+                    Fire.$emit("reload_store_product");
+                    Vue.$toast.open({
+                        message: `${data.msg}`,
+                        type: `${data.status}`
+                    });
+                }
+            } catch (error) {
+                const { status } = error.response;
+                switch (status) {
+                    case 500:
+                        Vue.$toast.open({
+                            message: "Internal Server Error.",
+                            type: "error"
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            }
+        },
+        async enabledAllStoreProduct({ commit }, payload) {
+            try {
+                const { status, data } = await Http.store_item_enable_all(
+                    payload
+                );
+                if (status == 200) {
+                    Fire.$emit("reload_store_product");
                     Vue.$toast.open({
                         message: `${data.msg}`,
                         type: `${data.status}`
