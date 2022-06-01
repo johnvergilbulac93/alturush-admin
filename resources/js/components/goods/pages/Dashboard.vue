@@ -231,7 +231,6 @@ export default {
     },
     computed: {
         ...mapState([
-            "isModal",
             "TotalItemNotAvailable",
             "ItemsNotAvailable",
             "perPage",

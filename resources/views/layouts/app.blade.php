@@ -42,7 +42,7 @@
             </form>
         </nav>
 
-        <aside class="fixed inset-0 h-screen w-60 overflow-y-auto  scrollbar border-r">
+        <aside class="fixed inset-0 h-screen w-60 overflow-y-auto  scrollbar border-r bg-white">
             <header class="flex flex-col items-center px-5 mt-[75px] ">
                 <div class="ml-2 flex items-center  flex-col uppercase my-2">
                     <h1 class="text-xs text-gray-700 font-bold">Alturush Administrator</h1>
@@ -73,7 +73,6 @@
                 @endcan
             </div>
         </aside>
-
         <div class="ml-60 mt-[75px] p-2  ">
             <router-view />
         </div>
@@ -83,23 +82,6 @@
 
     </div>
 
-    {{-- <footer class="fixed bottom-0 bg-gray-50 left-72 w-screen p-2 border-t">
-        <div class="flex justify-center items-center mr-64 gap-2">
-            <button onclick="window.open('https://www.facebook.com/AlturushDeliveryOfficial')"
-                class="focus:outline-none"><i
-                    class="fab fa-facebook fa-lg text-yellow-500 hover:text-yellow-600"></i></button>
-            <button onclick="window.open('https://alturush.com')" class="focus:outline-none"><i
-                    class="fas fa-globe fa-lg text-yellow-500 hover:text-yellow-600"></i></button>
-        </div>
-        <div class="flex justify-center items-center mr-64 group gap-1 ">
-            <h4 class="text-sm group-hover:text-blue-600">
-                &copy;
-            </h4>
-            <button onclick="window.open('https://admins.alturush.com')" class="group-hover:text-blue-600">Alturush |
-                Grocery-Admin 2020</button>
-        </div>
-
-    </footer> --}}
 
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/excel.js') }}" defer></script>

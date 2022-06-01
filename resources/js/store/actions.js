@@ -42,7 +42,7 @@ export const getItemNotAvailable = async (
     { currentPage, filterData }
 ) => {
     try {
-        const { status, data } = await Item.Item_not_available(
+        const { status, data } = await Item.item_not_available(
             currentPage,
             filterData
         );
@@ -323,7 +323,6 @@ export const getMostCancelledItem = async ({ commit }) => {
         console.log(error);
     }
 };
-
 
 export const getSelectedTenant = async ({ commit }, { id }) => {
     try {
