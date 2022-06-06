@@ -124,11 +124,7 @@ Vue.component(
     "menu-admin",
     require("./components/menu/Admin-Menu.vue").default
 );
-// Vue.component(
-//     "menu-iad-goods",
-//     require("./components/menu/IAD-Goods-Menu.vue").default
-// );
-
+Vue.component("menu-audit", require("./components/menu/Audit-Menu.vue").default);
 Vue.component(
     "menu-purch",
     require("./components/menu/Purchasing-Menu.vue").default

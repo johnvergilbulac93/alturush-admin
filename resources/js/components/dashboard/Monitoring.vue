@@ -1,6 +1,6 @@
 <template>
     <section>
-        <admin-dashboard v-if="$root.userType == 12 || $root.userType == 6 " />
+        <admin-dashboard v-if="$root.userType == 12 || $root.userType == 6 || $root.userType == 7 " />
         <store-dashboard v-else />
     </section>
 </template>

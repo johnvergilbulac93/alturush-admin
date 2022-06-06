@@ -56,9 +56,9 @@
                 @can('isAdmin')
                     <menu-admin></menu-admin>
                 @endcan
-                {{-- @can('isIAD')
-                    <menu-iad-goods></menu-iad-goods>
-                @endcan --}}
+                @can('isIAD')
+                    <menu-audit></menu-audit>
+                @endcan
                 @can('isPurchasing')
                     <menu-purch></menu-purch>
                 @endcan
