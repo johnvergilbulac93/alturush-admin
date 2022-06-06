@@ -30,7 +30,6 @@ class UploadingController extends Controller
     }
     public function uploadprice(Request $request)
     {
-        // (new PriceHistoryImport)->import($request->file('file_price'));
         $upload = (new PriceChangedImport)->import($request->file('file_price'));
         if ($upload) {
             return ['msg' => 'Upload successfully complete.', 'status' => 'success', 'title' => 'Success'];
@@ -105,7 +104,7 @@ class UploadingController extends Controller
         $imageName = $request->file->getClientOriginalName();
         $path = public_path() . '/ITEM-IMAGES/';
         // $path = '../admins.alturush.com/ITEM-IMAGES/';
-        // $path2 = 'https://admins.alturush.com/ITEM-IMAGES/'; 
+        // $path2 = 'https://admins.alturush.com/ITEM-IMAGES/';
         if (file_exists($path . $imageName)) {
             @unlink($path . $imageName);
         }

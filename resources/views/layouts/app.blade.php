@@ -49,33 +49,25 @@
                     <h1 class="text-gray-400 text-xs mt-1"> [ {{ auth()->user()->type->usertype }} MENU ]</h1>
                 </div>
             </header>
-            <div>
+            <section>
                 @can('isSuperAdmin')
                     <menu-main></menu-main>
                 @endcan
                 @can('isAdmin')
                     <menu-admin></menu-admin>
                 @endcan
-                @can('isGoodsIAD')
+                {{-- @can('isIAD')
                     <menu-iad-goods></menu-iad-goods>
-                @endcan
+                @endcan --}}
                 @can('isPurchasing')
                     <menu-purch></menu-purch>
                 @endcan
-                @can('isAccounting')
-                    <menu-acct></menu-acct>
-                @endcan
-                @can('isSupervisor')
-                    <menu-sup></menu-sup>
-                @endcan
-                @can('isFoodsIAD')
-                    <menu-iad-foods></menu-iad-foods>
-                @endcan
-            </div>
+
+            </section>
         </aside>
-        <div class="ml-60 mt-[75px] p-2  ">
+        <main class="ml-60 mt-[75px] p-2  ">
             <router-view />
-        </div>
+        </main>
         <back-to-top />
 
         <Profile v-if="upload_profile" />

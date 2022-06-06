@@ -1,6 +1,9 @@
 <template>
     <div class="space-y-2">
-        <div class="flex justify-between item-center gap-2">
+        <div
+            class="flex justify-between item-center gap-2"
+            v-if="$root.userType == 12"
+        >
             <Button
                 type="success"
                 size="large"

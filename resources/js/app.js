@@ -117,9 +117,6 @@ Vue.component("Datatable", require("./Usable/Datatable.vue").default);
 Vue.component("Error", require("./Usable/Error.vue").default);
 Vue.component("module-clock", require("./Usable/Clock.vue").default);
 
-Vue.component("menu-item", require("./Usable/TheMenuItem.vue").default);
-Vue.component("SubItem", require("./Usable/TheSubMenuItem.vue").default);
-Vue.component("Loading", require("./Usable/Loading.vue").default);
 Vue.component("back-to-top", require("./Usable/BacktoTop.vue").default);
 
 Vue.component("menu-main", require("./components/menu/Main-Menu.vue").default);
@@ -127,44 +124,17 @@ Vue.component(
     "menu-admin",
     require("./components/menu/Admin-Menu.vue").default
 );
-Vue.component(
-    "menu-iad-goods",
-    require("./components/menu/IAD-Goods-Menu.vue").default
-);
-Vue.component(
-    "menu-iad-foods",
-    require("./components/menu/IAD-Foods-Menu.vue").default
-);
+// Vue.component(
+//     "menu-iad-goods",
+//     require("./components/menu/IAD-Goods-Menu.vue").default
+// );
+
 Vue.component(
     "menu-purch",
     require("./components/menu/Purchasing-Menu.vue").default
 );
-Vue.component(
-    "menu-acct",
-    require("./components/menu/Accounting-Menu.vue").default
-);
-Vue.component(
-    "menu-sup",
-    require("./components/menu/Supervisor-Menu.vue").default
-);
-Vue.component(
-    "menu-sup",
-    require("./components/menu/Supervisor-Menu.vue").default
-);
 Vue.component("menu-header", require("./Usable/TheMenuHeader.vue").default);
 
-Vue.component(
-    "MainMenuHeader",
-    require("./Usable/TheMainHeaderMenu.vue").default
-);
-Vue.component(
-    "SkeletonLoading",
-    require("./Usable/SkeletonLoading.vue").default
-);
-Vue.component(
-    "transition-modal",
-    require("./Usable/Transition-Modal.vue").default
-);
 Vue.component("module-header", require("./Usable/Header.vue").default);
 Vue.component("module-dropdown", require("./Usable/Dropdown.vue").default);
 
