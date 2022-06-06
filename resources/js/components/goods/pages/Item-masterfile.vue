@@ -24,7 +24,7 @@
                         <Option
                             v-for="(category, index) in ItemCategory"
                             :key="index"
-                            :value="category.category_name"
+                            :value="category.category_name.trim()"
                         >
                             {{ category.category_name }}
                         </Option>
@@ -260,6 +260,7 @@ export default {
         },
         fetch() {
             this.form.itemIds = [];
+            this.allSelected = false;
             let filterData = {
                 length: this.tableData.length,
                 search: this.tableData.search,

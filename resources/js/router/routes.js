@@ -2,7 +2,7 @@ import store_product_list from "./../components/goods/pages/Item-masterfile";
 import disabled_item_batch from "./../components/goods/pages/Item-disabled-batch";
 import monitoring from "./../components/dashboard/Monitoring";
 
-import reports_store from "./../components/goods/pages/Reports-store";
+import store_export_product from "./../components/goods/pages/ExportProductStore";
 import exporting from "./../components/goods/pages/ExportFiles";
 import count from "./../components/goods/pages/Available-item-store";
 
@@ -174,10 +174,16 @@ const routes = [
         component: location_group_setup
     },
     {
-        path: "/masterfile/store_product_list",
+        path: "/masterfile/store/product_list",
         name: "store_product_list",
         component: store_product_list
     },
+    {
+        path: "/masterfile/store/export_product",
+        name: "store_export_product",
+        component: store_export_product
+    },
+
     {
         path: "/masterfile/voucher",
         name: "voucher",
@@ -314,11 +320,6 @@ const routes = [
         path: "/disabled_item_batch",
         name: "disabled_item",
         component: disabled_item_batch
-    },
-    {
-        path: "/reports_store",
-        name: "reports_store",
-        component: reports_store
     },
     {
         path: "/exporting",

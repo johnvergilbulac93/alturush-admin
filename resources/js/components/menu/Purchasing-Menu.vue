@@ -4,17 +4,13 @@
             <Icon type="md-speedometer" />
             Dashboard
         </MenuItem>
-        <MenuItem name="2" to="/masterfile/store_product_list">
+        <MenuItem name="2" to="/masterfile/store/product_list">
             <Icon type="md-basket" />
             Product Lists
         </MenuItem>
-        <MenuItem name="3" to="/">
+        <MenuItem name="3" to="/masterfile/store/export_product">
             <Icon type="md-download" />
             Export Product
-        </MenuItem>
-        <MenuItem name="4" to="/">
-            <Icon type="md-basket" />
-            Product Lists
         </MenuItem>
     </Menu>
 </template>

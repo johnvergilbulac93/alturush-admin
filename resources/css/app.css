@@ -163,7 +163,7 @@ hr {
     z-index: 100 !important;
 }
 .exportBtn {
-    @apply w-[50%] px-4 py-1 h-[32px] text-center cursor-pointer bg-green-500 focus:outline-none hover:bg-green-600 text-white  transition duration-500 rounded;
+    @apply w-full px-4 py-1 h-[32px] text-center cursor-pointer bg-green-500 focus:outline-none hover:bg-green-600 text-white  transition duration-500 rounded;
 }
 .ivu-spin-fix {
     @apply bg-black/60 !important;
