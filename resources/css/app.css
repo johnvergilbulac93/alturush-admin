@@ -168,3 +168,16 @@ hr {
 .ivu-spin-fix {
     @apply bg-black/60 !important;
 }
+.form-control2 {
+    @apply appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm;
+}
+.form-control3 {
+    @apply appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm;
+}
+#bodyClass {
+    background-image: url("/images/ALTURUSH/Landing new_v1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 100% 100%;
+}

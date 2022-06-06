@@ -20,7 +20,7 @@
 </head>
 
 <body class="font-quest antialiased  ">
-    <div id='app'>
+    <div id='app' class="bg-white">
         <nav class="fixed w-full z-20 top-0 border-b ">
             <div class=" flex items-center justify-between bg-gray-50 p-4  border-gray-200  ">
                 <div class="flex items-center flex-shrink-0 text-white  ">
