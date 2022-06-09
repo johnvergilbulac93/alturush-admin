@@ -30,7 +30,7 @@
                         <div class="w-auto">
                             <label for="username" class="sr-only">Username</label>
                             @error('username')
-                                <span class="text-xs text-red-500" role="alert">
+                                <span class="text-xs text-red-500" role="alert" id="idErrorMsg">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
@@ -43,26 +43,19 @@
                             <input name="password" :type="showPassword ? 'text' : 'password'"
                                 autocomplete="current-password" required class="form-control3" placeholder="Password">
                             @error('password')
-                                <span class="text-xs text-red-500" role="alert">
+                                <span class="text-xs text-red-500" role="alert" id="idErrorMsg">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-end">
                         <div class="flex items-center">
                             <input id="remember" name="remember" type="checkbox" @click="toggleShow"
                                 class="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded">
                             <label for="remember" class="ml-2 block text-sm "> Show Password </label>
                         </div>
-                        @if (Route::has('password.request'))
-                            <div class="text-sm">
-                                <a href="{{ route('password.request') }}"
-                                    class="font-medium text-orange-500 hover:text-orange-600"> Forgot your password?
-                                </a>
-                            </div>
-                        @endif
                     </div>
 
                     <div>

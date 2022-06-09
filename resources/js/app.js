@@ -92,9 +92,6 @@ Vue.filter("toCurrency2", function(value) {
     });
     return formatter.format(value);
 });
-//End of Filters Section
-
-// About User info
 
 let serverDateTime = document.head.querySelector('meta[name="server-datetime"]')
     .content;
@@ -105,9 +102,6 @@ window.serverDateTime = serverDateTime;
 window.userType = userType;
 window.id = id;
 
-//End About User info
-
-//Global Declaration Component
 Vue.component(
     "Profile",
     require("./components/goods/pages/Profile-Upload.vue").default
@@ -137,13 +131,13 @@ Vue.component("menu-header", require("./Usable/TheMenuHeader.vue").default);
 Vue.component("module-header", require("./Usable/Header.vue").default);
 Vue.component("module-dropdown", require("./Usable/Dropdown.vue").default);
 
-//End Global Declaration Component
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+setTimeout(() => {
+    const box = document.getElementById("idErrorMsg");
+    if (box) {
+        box.style.display = "none";
+    }
+}, 5000);
 
 const app = new Vue({
     el: "#app",

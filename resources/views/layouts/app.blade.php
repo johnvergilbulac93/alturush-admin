@@ -12,6 +12,7 @@
     <meta name="id" content="{{ Auth::user()->id }}">
     <meta name="server-datetime" content="{{ now() }}">
 
+
     <title>Alturush | Administrator</title>
     {{-- <link rel="icon" type="image/x-icon" href="https://www.alturush.com/alturush_logo/AlturushDeliveryLogoGradient.png"> --}}
 
