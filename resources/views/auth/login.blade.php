@@ -17,7 +17,7 @@
 </head>
 
 <body class="font-inter antialiased " id='bodyClass'>
-    <div id="app" class="min-h-full flex items-center justify-end py-12 px-4 sm:px-6 lg:px-8 ">
+    <div id="app" class="min-h-full flex items-center justify-center lg:justify-end py-12 px-4 sm:px-6 lg:px-8 ">
         <div class="max-w-md w-full space-y-4 block bg-gray-100 rounded  mt-12 ">
             <img src="{{ asset('/img/AlturushDeliveryLogoGradient.png') }}" class="mx-auto h-20 w-auto mt-2">
             <h2 class=" text-center text-xl font-extrabold  " class=" ">Sign in to

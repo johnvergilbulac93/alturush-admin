@@ -9,13 +9,6 @@ module.exports = {
         container: {
             center: true
         },
-        screens: {
-            sm: "320px",
-            md: "480px",
-            lg: "768px",
-            xl: "1050px",
-            xxl: "1680px"
-        },
         extend: {
             outline: {
                 blue: "0.5px solid #0000ff"
