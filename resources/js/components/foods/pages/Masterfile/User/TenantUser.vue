@@ -57,7 +57,7 @@
                             <div class="flex justify-center gap-2 items-center">
                                 <img
                                     class="h-6 w-6 object-cover rounded-full"
-                                    :src="$root.web_url + user.image"
+                                    :src="imgSrc(user.image)"
                                     alt="photo"
                                 />
                                 |
@@ -375,10 +375,13 @@ export default {
             "tenantResetPass",
             "changeTenantUserStatus"
         ]),
+        imgSrc(img) {
+            return process.env.MIX_IMAGE_PATH + img;
+        },
         changePhotoUser(id, image) {
             this.id = id;
             this.drawer2 = !this.drawer2;
-            this.url = this.$root.web_url + image;
+            this.url = process.env.MIX_IMAGE_PATH + image;
         },
         changeStatus(user) {
             this.$Modal.confirm({

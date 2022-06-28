@@ -131,7 +131,6 @@ Vue.component("menu-header", require("./Usable/TheMenuHeader.vue").default);
 Vue.component("module-header", require("./Usable/Header.vue").default);
 Vue.component("module-dropdown", require("./Usable/Dropdown.vue").default);
 
-
 setTimeout(() => {
     const box = document.getElementById("idErrorMsg");
     if (box) {
@@ -145,12 +144,6 @@ const app = new Vue({
     store,
     data() {
         return {
-            url: process.env.MIX_URL_LOCAL,
-            path: process.env.MIX_URL_PATH,
-            web_url: process.env.MIX_WEB_URL,
-
-            // url: process.env.MIX_URL_ITEM_IMAGES,
-            // path: process.env.MIX_URL_RESOURCES,
             serverDateTime,
             userType,
             id,

@@ -60,7 +60,7 @@
                                 >
                                     <img
                                         class="h-6 w-6 object-cover rounded-full"
-                                        :src="$root.web_url + bu.logo"
+                                        :src="imgSrc(bu.logo)"
                                         alt="photo"
                                     />
                                     |
@@ -341,9 +341,12 @@ export default {
             "editBusinessUnit",
             "updateStatus"
         ]),
+        imgSrc(img) {
+            return process.env.MIX_IMAGE_PATH + img;
+        },
         changePhotoUser(id, image) {
             this.bu_id = id;
-            this.url = this.$root.web_url + image;
+            this.url = process.env.MIX_IMAGE_PATH + image;
             this.drawer3 = !this.drawer3;
         },
         changeStatus(bu) {

@@ -56,7 +56,7 @@
                             <div class="flex justify-start gap-2 items-center">
                                 <img
                                     class="h-6 w-6 object-cover rounded-full"
-                                    :src="$root.web_url + user.image"
+                                    :src="imgSrc(user.image)"
                                     alt="photo"
                                 />
                                 |
@@ -293,14 +293,7 @@ export default {
         };
     },
     computed: {
-        ...mapState([
-            "errors",
-            "perPage",
-            "pagination",
-            "isModal",
-            "FoodUsertype",
-            "isModal2"
-        ]),
+        ...mapState(["errors", "perPage", "pagination", "FoodUsertype"]),
         ...mapState("User", ["SystemUser", "DefaultUsername"])
     },
     watch: {
@@ -309,13 +302,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions([
-            "getFoodUsertype",
-            "modal",
-            "modal2",
-            "updateSystemUser",
-            "getUserRole"
-        ]),
+        ...mapActions(["getUserRole"]),
         ...mapActions("User", [
             "getSystemUser",
             "getDefaultUsername",
@@ -325,6 +312,9 @@ export default {
             "systemResetPass"
         ]),
         ...mapMutations(["CLEAR_ERRORS"]),
+        imgSrc(img) {
+            return process.env.MIX_IMAGE_PATH + img;
+        },
         resetPassword(user) {
             this.$Modal.confirm({
                 title: "Reset Password",
@@ -363,7 +353,7 @@ export default {
         changePhotoUser(id, image) {
             this.id = id;
             this.drawer2 = !this.drawer2;
-            this.url = this.$root.web_url + image;
+            this.url = process.env.MIX_IMAGE_PATH + image;
         },
         handleFileChange(event) {
             let input = event.target;

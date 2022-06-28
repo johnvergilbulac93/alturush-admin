@@ -14,7 +14,8 @@
 
 
     <title>Alturush | Administrator</title>
-    {{-- <link rel="icon" type="image/x-icon" href="https://www.alturush.com/alturush_logo/AlturushDeliveryLogoGradient.png"> --}}
+    <link rel="icon" type="image/x-icon"
+        href="https://www.alturush.com/alturush_logo/AlturushDeliveryLogoGradient.png">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -26,7 +27,7 @@
             <div class=" flex items-center justify-between bg-gray-50 p-4  border-gray-200  ">
                 <div class="flex items-center flex-shrink-0 text-white  ">
                     <router-link to="/" class="brand-logo flex items-center gap-2">
-                        <img class="w-40" src="{{ asset('img/alturush.png') }}" alt="main">
+                        <img class="w-40" src="{{ asset('images/alturush.png') }}" alt="main">
                     </router-link>
                 </div>
                 <div class="flex items-center gap-10">

@@ -135,7 +135,11 @@ export default {
         ...mapActions("Rider", ["clearLiabilities"]),
         imgSrc() {
             if (this.infos) {
-                return `${this.$root.web_url}images/${this.infos.rm_picture}`;
+                return (
+                    process.env.MIX_IMAGE_PATH +
+                    "images/" +
+                    this.infos.rm_picture
+                );
             }
         },
         customer(data) {
