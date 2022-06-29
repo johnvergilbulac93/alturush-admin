@@ -302,7 +302,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(["getUserRole"]),
+        ...mapActions(["getFoodUsertype", "getUserRole"]),
         ...mapActions("User", [
             "getSystemUser",
             "getDefaultUsername",
