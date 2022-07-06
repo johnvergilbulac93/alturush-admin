@@ -334,7 +334,7 @@ class UserController extends Controller
 
         if ($request->file('image')) {
             $image = $request->file('image');
-            $imageName = 'tenant_' . $request->username . '.' . $image->getClientOriginalExtension();
+            $imageName = 'tenant_' . time() . '.' . $image->getClientOriginalExtension();
             $path = public_path('/images/tenant_users');
             $image->move($path, $imageName);
             if (file_exists($path . $imageName)) {
@@ -419,7 +419,7 @@ class UserController extends Controller
     public function change_tenant_user_photo(Request $request)
     {
         $image = $request->file('image');
-        $imageName = 'tenant_' . $request->id . '.' . $image->getClientOriginalExtension();
+        $imageName = 'tenant_' . time() . '.' . $image->getClientOriginalExtension();
         $path = public_path('/images/tenant_users');
 
         $image->move($path, $imageName);
@@ -495,7 +495,7 @@ class UserController extends Controller
 
         if ($request->file('image')) {
             $image = $request->file('image');
-            $imageName = 'system_user_' . $request->username . '.' . $image->getClientOriginalExtension();
+            $imageName = 'system_user_' . time() . '.' . $image->getClientOriginalExtension();
             $path = public_path('/images/system_users');
             $image->move($path, $imageName);
             if (file_exists($path . $imageName)) {
@@ -548,7 +548,7 @@ class UserController extends Controller
     public function change_system_user_photo(Request $request)
     {
         $image = $request->file('image');
-        $imageName = 'system_users_' . $request->id . '.' . $image->getClientOriginalExtension();
+        $imageName = 'system_users_' . time() . '.' . $image->getClientOriginalExtension();
         $path = public_path('/images/system_users');
 
         $image->move($path, $imageName);
