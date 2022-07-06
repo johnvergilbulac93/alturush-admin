@@ -59,7 +59,7 @@
                             <div class="flex items-center gap-2">
                                 <img
                                     v-if="data.logo"
-                                    :src="$root.web_url + data.logo"
+                                    :src="imgSrc(data.logo)"
                                     alt="image"
                                     class="w-6 h-6 rounded-full"
                                 />
@@ -240,7 +240,7 @@
                         <img
                             v-if="!preview"
                             class="h-14 w-14 object-cover rounded-full"
-                            :src="$root.path + 'noimage.png'"
+                            :src="imgSrc('noimage.png')"
                             alt="Current profile photo"
                         />
                         <label class="block">
@@ -383,13 +383,15 @@ export default {
             "getTenantFoods",
             "changeStatusTenantFoods",
             "saveFoodsTenant",
-            "updateFoodsTenant",
-            
+            "updateFoodsTenant"
         ]),
+        imgSrc(img) {
+            return process.env.MIX_IMAGE_PATH + img;
+        },
         changePhotoTenant(id, image) {
             this.id = id;
             this.drawer3 = true;
-            this.url = this.$root.web_url + image;
+            this.url = process.env.MIX_IMAGE_PATH + image;
         },
         addModal() {
             this.reset();
@@ -527,6 +529,7 @@ export default {
         Fire.$on("reload_foods_tenant", () => {
             this.fetch();
             this.drawer = false;
+            this.drawer3 = false;
         });
         this.fetch();
     }

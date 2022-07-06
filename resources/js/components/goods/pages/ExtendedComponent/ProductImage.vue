@@ -69,11 +69,13 @@ export default {
             if (this.product != null) {
                 if (this.product.image == null) {
                     let path =
-                        this.$root.web_url + "ITEM-IMAGES/" + "noimage.png";
+                        process.env.MIX_IMAGE_PATH +
+                        "ITEM-IMAGES/" +
+                        "noimage.png";
                     return path;
                 } else {
                     let path =
-                        this.$root.web_url +
+                        process.env.MIX_IMAGE_PATH +
                         "ITEM-IMAGES/" +
                         this.product.image;
                     return path;

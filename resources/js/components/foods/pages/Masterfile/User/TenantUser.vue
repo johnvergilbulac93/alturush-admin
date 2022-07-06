@@ -376,7 +376,7 @@ export default {
             "changeTenantUserStatus"
         ]),
         imgSrc(img) {
-            return process.env.MIX_IMAGE_PATH + img;
+            return process.env.MIX_IMAGE_PATH + img; 
         },
         changePhotoUser(id, image) {
             this.id = id;

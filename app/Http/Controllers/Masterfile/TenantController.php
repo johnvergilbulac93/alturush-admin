@@ -144,7 +144,7 @@ class TenantController extends Controller
 
         if ($request->file('image')) {
             $image = $request->file('image');
-            $imageName = 'tenant_' . $request->tenant_name . '.' . $image->getClientOriginalExtension();
+            $imageName = 'tenant_' . time() . '.' . $image->getClientOriginalExtension();
             $path = public_path('/images/tenants');
             $image->move($path, $imageName);
             if (file_exists($path . $imageName)) {
@@ -253,6 +253,24 @@ class TenantController extends Controller
     }
     public function change_image_tenant_foods(Request $request)
     {
-        dd($request);
+
+        $image = $request->file('image');
+        $imageName = 'tenant_' . time() . '.' . $image->getClientOriginalExtension();
+
+        $path = public_path('/images/tenants');
+
+        $image->move($path, $imageName);
+        if (file_exists($path . $imageName)) {
+            @unlink($path . $imageName);
+        }
+        $save = TenantFood::where('tenant_id', $request->id)->update([
+            'logo'              => 'images/tenants/' . $imageName,
+            'updated_at'             => date('Y-m-d H:i:s'),
+        ]);
+        if ($save) {
+            return ['msg' => 'Logo successfully updated.', 'status' => 'success', 'title' => 'Success'];
+        } else {
+            return ['msg' => 'Oops. something went wrong.', 'status' => 'error', 'title' => 'Oops'];
+        }
     }
 }
